@@ -1,12 +1,12 @@
 import "../assets/css/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import Context from "../Context";
+import AuthContext from "../Contexts/AuthContext.js";
 import { useContext } from "react";
 
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { usuario, setUsuario } = useContext(Context);
+  const { usuario, setUsuario } = useContext(AuthContext);
   
   
   return (

@@ -40,18 +40,14 @@ export default function RegisterForm() {
           placeholder="************"
         />
       </div>
+
       <div className="form-group mt-1 ">
         <label>Género</label>
-        <select
-          name="gender"
-          className="form-select"
-        >
-          <option disabled selected>
-            Seleccione un género
-          </option>
+        <select name="gender" className="form-select">
+          <option value="Otro">Otro</option>
           <option value="Femenino">Femenino</option>
           <option value="Masculino">Masculino</option>
-          <option value="Otro">Otro</option>
+          
         </select>
       </div>
       

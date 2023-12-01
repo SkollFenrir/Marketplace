@@ -1,17 +1,18 @@
-import { useState, useContext } from "react";
-import Context from "../Context";
+import React, { useContext } from "react";
+import AuthContext from "../Contexts/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 
 
 export default function RegistroForm() {
-  const { setUsuario } = useContext(Context);
+  const { setUsuario } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [usuario, setUsuarioLocal] = useState({});
 
-  const handleSetUsuario = ({ target: { value, name } }) => {
-    const field = {};
-    field[name] = value;
-    setUsuarioLocal({ ...usuario, ...field });
+
+  const handleLogin = () => {
+    // Cambiar el estado de autenticación a true
+    alert("Usuario identificado con éxito 😀")
+    setUsuario();
+    navigate("/profile")
   };
 
   return (
@@ -21,8 +22,8 @@ export default function RegistroForm() {
       <div className="form-group mt-1 ">
         <label>Correo electrónico</label>
         <input
-          value={usuario.email}
-          onChange={handleSetUsuario}
+
+          // onChange={} todavía no se usará
           type="email"
           name="email"
           className="form-control"
@@ -32,16 +33,16 @@ export default function RegistroForm() {
       <div className="form-group mt-1 ">
         <label>Contraseña</label>
         <input
-          value={usuario.password}
-          onChange={handleSetUsuario}
+
+          // onChange={} todavía no se usará
           type="password"
           name="password"
           className="form-control"
           placeholder="********"
         />
       </div>
-
-      <button className="btn btn-light mt-3">
+      
+      <button className="btn btn-light mt-3" onClick={handleLogin}>
         Iniciar Sesión
       </button>
     </div>
