@@ -1,6 +1,6 @@
+import AuthContext from "../Contexts/AuthContext.js";
 import { Container, Navbar as NavbarB, Button } from 'react-bootstrap';
 import { Link, useNavigate, NavLink } from 'react-router-dom';
-import Context from "../Context";
 import { useContext } from "react";
 
 export default function Navbar() {
