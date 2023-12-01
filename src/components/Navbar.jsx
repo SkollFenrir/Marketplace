@@ -1,10 +1,10 @@
-import AuthContext from "../Contexts/AuthContext.js";
+import AuthContext from "../Contexts/AuthContext.js"; 
 import { Container, Navbar as NavbarB, Button } from 'react-bootstrap';
 import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { useContext } from "react";
 
 export default function Navbar() {
-  const { usuario, setUsuario } = useContext(Context);
+  const { usuario, setUsuario } = useContext(AuthContext);
 	const setActive = ({ isActive }) => (isActive ? 'active' : 'undefined');
 	return (
 		<NavbarB
