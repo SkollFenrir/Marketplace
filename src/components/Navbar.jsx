@@ -1,50 +1,47 @@
-import "../assets/css/Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
 import AuthContext from "../Contexts/AuthContext.js";
+import { Container, Navbar as NavbarB, Button } from 'react-bootstrap';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { useContext } from "react";
 
-
 export default function Navbar() {
-  const navigate = useNavigate();
-  const { usuario, setUsuario } = useContext(AuthContext);
-  
-  
-  return (
-    <nav className="navbar">
-      <span className="logo">AVDG-Place</span>
-
-      <div className="opciones">
-
-        <span className="me-3">
-          <Link to="/">
-            Inicio
-            <i className="fa-solid fa-house ms-2"></i>
-          </Link>
-        </span>
-
-        {!usuario ? (
-
-          <div>
-            <Link to="/register">
-              <button className="btn m-1 register-btn">Registrarse</button>
-            </Link>
-
-            <Link to="/login">
-              <button className="btn login-btn">Iniciar Sesión</button>
-            </Link>
-          </div>
-
-        ) : (
-
-          <div>
-            <Link to="/profile">
-              <button className="btn  m-1 btn-light">Mi Perfil</button>
-            </Link>
-
-          </div>
-        )}
-
-      </div>
-    </nav>
-  );
+  const { usuario, setUsuario } = useContext(Context);
+	const setActive = ({ isActive }) => (isActive ? 'active' : 'undefined');
+	return (
+		<NavbarB
+			expand='lg'
+			className='bg-body-tertiary'>
+			<Container fluid>
+				<NavbarB.Brand className='logo'>
+					<NavLink
+						className={setActive}
+						to={'/'}>
+						AVDG-Place
+					</NavLink>
+				</NavbarB.Brand>
+				<NavbarB.Toggle />
+				<NavbarB.Collapse className='justify-content-end '>
+					{!usuario ? (
+						<>
+							<NavLink to={'/'}>
+								<Button variant='outline-secondary'>Inicio</Button>
+							</NavLink>
+							<NavLink to={'/register'}>
+								<Button variant='outline-primary'>Registrarse</Button>
+							</NavLink>
+							<NavLink to={'/login'}>
+								<Button variant='outline-light'>Iniciar Sesión</Button>
+							</NavLink>
+						</>
+					) : (
+						<>
+							<NavLink to={'/profile'}>Perfil</NavLink>
+							<NavLink to={'/'}>
+								<Button variant='outline-danger'>Cerrar sesión</Button>
+							</NavLink>
+						</>
+					)}
+				</NavbarB.Collapse>
+			</Container>
+		</NavbarB>
+	);
 }
