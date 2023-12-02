@@ -9,7 +9,7 @@ const CardP = ({ product }) => {
 	}; */     //Pendiente de uso 
 	const { id, img, title, desc, price, status } = product;
 	return (
-		<Card
+		<Card className='card'
 			/* onClick={() => navigateProduct(id)} */ //Pendiente de uso
 			style={{ width: '18rem' }}>
 			<Card.Img

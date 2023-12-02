@@ -8,6 +8,7 @@ import Home from "./views/Home";
 import RegisterForm from "./views/Register";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
+import Gallery from "./views/Gallery";
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -21,6 +22,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route path="/register" element={<RegisterForm />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
