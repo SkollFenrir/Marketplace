@@ -21,3 +21,20 @@ body {
 .paddingCollaps {
 	margin: 10px;
 }
+
+.card {
+	background-color: #312f37;
+}
+
+.Gallery-container {
+	width: 100%;
+	height: auto;
+	min-height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 28px;
+	align-items: center;
+	justify-content: center;
+	gap: 60px;
+}
