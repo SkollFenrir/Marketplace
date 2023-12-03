@@ -5,7 +5,8 @@
         "title":"Control PS4 Inalámbrico",
         "desc": "JOYSTICK DOUBLESHOCK 4 PARA PS4 WIRELESS CONTROL! El mejor precio a tu disposición, el nuevo joystick Doubleshock 4 es el ideal para ahorrar dinero brindando la misma calidad de los joysticks originales Sony.",
         "price": 49990,
-        "status": true
+        "status": true,
+        "user_id": 1
     },
     {
         "id": 2 ,
@@ -13,7 +14,8 @@
         "title":"Control PS4 Inalámbrico",
         "desc": "JOYSTICK DOUBLESHOCK 4 PARA PS4 WIRELESS CONTROL! El mejor precio a tu disposición, el nuevo joystick Doubleshock 4 es el ideal para ahorrar dinero brindando la misma calidad de los joysticks originales Sony.",
         "price": 49990,
-        "status": true
+        "status": true,
+        "user_id": 1
     },
     {
         "id": 3 ,
@@ -21,7 +23,8 @@
         "title":"Control PS4 Inalámbrico",
         "desc": "JOYSTICK DOUBLESHOCK 4 PARA PS4 WIRELESS CONTROL! El mejor precio a tu disposición, el nuevo joystick Doubleshock 4 es el ideal para ahorrar dinero brindando la misma calidad de los joysticks originales Sony.",
         "price": 49990,
-        "status": true
+        "status": true,
+        "user_id": 2
     },
     {
         "id": 4 ,
@@ -29,6 +32,7 @@
         "title":"Control PS4 Inalámbrico",
         "desc": "JOYSTICK DOUBLESHOCK 4 PARA PS4 WIRELESS CONTROL! El mejor precio a tu disposición, el nuevo joystick Doubleshock 4 es el ideal para ahorrar dinero brindando la misma calidad de los joysticks originales Sony.",
         "price": 49990,
-        "status": true
+        "status": true,
+        "user_id": 3
     }
 ]
