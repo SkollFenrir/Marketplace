@@ -13,6 +13,7 @@ import Profile from "./views/Profile";
 import Gallery from "./views/Gallery";
 import Product from "./views/Product";
 import NotFound from "./views/NotFound";
+import Sell from "./views/Sell";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sell" element={<Sell />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/register" element={<RegisterForm />} />
