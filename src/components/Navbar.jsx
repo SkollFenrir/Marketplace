@@ -25,8 +25,11 @@ export default function Navbar() {
 							<NavLink to={'/'}>
 								<Button variant='outline-secondary'>Inicio</Button>
 							</NavLink>
+							<NavLink to={'/sell'}>
+								<Button variant='outline-primary'>Vender</Button>
+							</NavLink>
 							<NavLink to={'/gallery'}>
-								<Button variant='outline-primary'>Tienda</Button>
+								<Button variant='outline-secondary'>Tienda</Button>
 							</NavLink>
 							<NavLink to={'/register'}>
 								<Button variant='outline-primary'>Registrarse</Button>
