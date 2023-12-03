@@ -11,7 +11,7 @@ export default function InputLogin() {
 
   const handleLogin = () => {
     // Cambiar el estado de autenticación a true
-    alert("Usuario identificado con éxito 😀")
+    // alert("Usuario identificado con éxito 😀")
     setUsuario();
     navigate("/profile")
   };
