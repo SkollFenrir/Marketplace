@@ -3,14 +3,14 @@ import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const CardP = ({ product }) => {
-	/* const navigate = useNavigate();
+	const navigate = useNavigate();
 	const navigateProduct = (id) => {  
 		navigate(`/Product/${id}`); 
-	}; */     //Pendiente de uso 
+	};      //Pendiente de uso 
 	const { id, img, title, desc, price, status } = product;
 	return (
 		<Card className='card'
-			/* onClick={() => navigateProduct(id)} */ //Pendiente de uso
+			onClick={() => navigateProduct(id)}  //Pendiente de uso
 			style={{ width: '18rem' }}>
 			<Card.Img
 				variant='top'

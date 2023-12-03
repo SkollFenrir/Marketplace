@@ -1,17 +1,13 @@
 import { Col, Container } from 'react-bootstrap';
 import CardP from '../components/CardP';
-import { useEffect, useState } from 'react';
+import ProductContext from '../Contexts/ProductContext';
+import React, { useContext } from 'react';
+
+
 
 export default function Gallery() {
-	const [products, setProducts] = useState([]);
-	const getData = async () => {
-		let res = await fetch('../public/products.json');
-		let data = await res.json();
-		setProducts([...data]);
-	};
-	useEffect(() => {
-		getData();
-	}, []);
+
+	const { products } = useContext(ProductContext);
 
 	return (
 		<Container className='Gallery-container'>
