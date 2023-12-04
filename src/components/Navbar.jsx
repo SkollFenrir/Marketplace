@@ -1,11 +1,16 @@
-import AuthContext from "../Contexts/AuthContext.js"; 
+import AuthContext from '../Contexts/AuthContext.js';
 import { Container, Navbar as NavbarB, Button } from 'react-bootstrap';
-import { Link, useNavigate, NavLink } from 'react-router-dom';
-import { useContext } from "react";
+import { useNavigate, NavLink } from 'react-router-dom';
+import { useContext } from 'react';
 
 export default function Navbar() {
-  const { usuario, setUsuario } = useContext(AuthContext);
+	const { usuario, setUsuario } = useContext(AuthContext);
+	const navigate = useNavigate();
 	const setActive = ({ isActive }) => (isActive ? 'active' : 'undefined');
+	const logOut = () => {
+		setUsuario(null);
+		localStorage.removeItem('token');
+	};
 	return (
 		<NavbarB
 			expand='lg'
@@ -23,20 +28,44 @@ export default function Navbar() {
 					{!usuario ? (
 						<>
 							<NavLink to={'/'}>
-								<Button variant='outline-secondary'>Inicio</Button>
+								<Button
+									className='m-1'
+									variant='outline-light'>
+									Inicio
+								</Button>
 							</NavLink>
 							<NavLink to={'/register'}>
-								<Button variant='outline-primary'>Registrarse</Button>
+								<Button
+									className='m-1'
+									variant='outline-light'>
+									Registrarse
+								</Button>
 							</NavLink>
 							<NavLink to={'/login'}>
-								<Button variant='outline-light'>Iniciar Sesión</Button>
+								<Button
+									className='m-1'
+									variant='outline-light'>
+									Iniciar Sesión
+								</Button>
 							</NavLink>
 						</>
 					) : (
 						<>
-							<NavLink to={'/profile'}>Perfil</NavLink>
+							<NavLink to={'/profile'}>
+								{' '}
+								<Button
+									className='m-1'
+									variant='outline-light'>
+									Perfil
+								</Button>{' '}
+							</NavLink>
 							<NavLink to={'/'}>
-								<Button variant='outline-danger'>Cerrar sesión</Button>
+								<Button
+									className='m-1'
+									variant='outline-danger'
+									onClick={logOut}>
+									Cerrar sesión
+								</Button>
 							</NavLink>
 						</>
 					)}
