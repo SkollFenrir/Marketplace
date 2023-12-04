@@ -1,34 +1,42 @@
 import { useContext, useState, useEffect } from 'react';
 import AuthContext from '../Contexts/AuthContext.js';
-import { Button, Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import {
+	Button,
+	Col,
+	Container,
+	ListGroup,
+	ListGroupItem,
+	Row,
+} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
 export default function Profile() {
-  const navigate = useNavigate();
-	const navigateMyProduct = () => {  
-		navigate(`/my-products`); 
+	const { usuario } = useContext(AuthContext);
+	const { nombre, apellido, genero, email } = usuario;
+	const navigate = useNavigate();
+	const navigateMyProduct = () => {
+		navigate(`/my-products`);
 	};
-  const navigateSell = () => {  
-		navigate(`/sell`); 
+	const navigateSell = () => {
+		navigate(`/sell`);
 	};
-  const navigateGallery = () => {  
-		navigate(`/gallery`); 
+	const navigateGallery = () => {
+		navigate(`/gallery`);
 	};
 
 	return (
 		<Container className='mt-4'>
 			<h1 className='logo'>
-				Bienvenido <span className='fw-bold'>Juan Pérez</span>
+				Bienvenido <span className='fw-bold'>{nombre}</span>
 			</h1>
-			<Row className='mt-5' >
-				<Col >
-					<div className="justify-content-center align-items-center">
-						<Row >
-            <div className='mt-5'>
+			<Row className='mt-5'>
+				<Col>
+					<div className='justify-content-center align-items-center'>
+						<Row>
+							<div className='mt-5'>
 								<Button
 									variant='primary'
 									size='md'
-                  onClick={navigateGallery}>
+									onClick={navigateGallery}>
 									Tienda
 								</Button>
 							</div>
@@ -36,7 +44,7 @@ export default function Profile() {
 								<Button
 									variant='primary'
 									size='md'
-                  onClick={navigateMyProduct}>
+									onClick={navigateMyProduct}>
 									Mis productos
 								</Button>
 							</div>
@@ -46,21 +54,21 @@ export default function Profile() {
 								<Button
 									variant='primary'
 									size='md'
-                  onClick={navigateSell}>
-									  Vender   
+									onClick={navigateSell}>
+									Vender
 								</Button>
 							</div>
 						</Row>
 					</div>
 				</Col>
 				<Col>
-					< >
+					<>
 						<h3 className='logo'>Datos personales</h3>
-            <ListGroup className='mt-3'>
-              <ListGroupItem variant="secondary">Nombre Apellido</ListGroupItem>
-              <ListGroupItem variant="primary">Correo</ListGroupItem>
-              <ListGroupItem variant="success">Género</ListGroupItem>
-            </ListGroup>
+						<ListGroup className='mt-3'>
+							<ListGroupItem variant='secondary'>{`${nombre} ${apellido} `}</ListGroupItem>
+							<ListGroupItem variant='primary'>{email}</ListGroupItem>
+							<ListGroupItem variant='success'>{`${genero}  `}</ListGroupItem>
+						</ListGroup>
 					</>
 				</Col>
 			</Row>
