@@ -22,15 +22,15 @@ const Product = () => {
           </div>
         </Col>
         <Col md={7}>
-          <Card.Body>
+          <Card.Body md={7} className='card-body'>
             <Card.Title className="fw-bolder first-let-cap">{currentProduct.title}</Card.Title>
 
             <Card.Text>{currentProduct.desc}</Card.Text>
             
             <div className="d-flex justify-content-between">
               <div className="fw-bold fs-4">Precio: ${currentProduct.price.toLocaleString()}</div>
-              <Button variant="success">
-                Añadir 🛒
+              <Button className="danger-btn">
+                Eliminar producto ❌
               </Button>
             </div>
           </Card.Body>

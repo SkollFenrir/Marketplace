@@ -12,7 +12,6 @@ export default function InputRegister() {
 					//onChange={} todavía no se usará
 					placeholder='Juan'
 					aria-label='name'
-					aria-aria-describedby='nombre del usuario'
 				/>
       </InputGroup>
           
@@ -22,7 +21,6 @@ export default function InputRegister() {
 					//onChange={} todavía no se usará
 					placeholder='Pérez'
 					aria-label='last-name'
-					aria-aria-describedby='apellido del usuario'
 				/>
       </InputGroup>
           
@@ -54,7 +52,7 @@ export default function InputRegister() {
         <option value="other">Otro</option>
       </Form.Select>
 
-        <Button variant="primary" className='mt-3' /* onClick={} */>
+        <Button className='mt-3 primary-btn' /* onClick={} */>
           Enviar formulario
         </Button>
       </>

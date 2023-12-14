@@ -4,6 +4,6 @@
 	"nombre": "John",
 	"apellido": "Doe",
 	"email": "johndoe@gmail.com",
-	"genero": "RGB",
+	"genero": "masculino",
 	"password": "123456"
 }
