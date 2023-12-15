@@ -1,11 +1,10 @@
 import AuthContext from '../Contexts/AuthContext.js';
 import { Container, Navbar as NavbarB, Button } from 'react-bootstrap';
-import { useNavigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 
 export default function Navbar() {
 	const { usuario, setUsuario } = useContext(AuthContext);
-	const navigate = useNavigate();
 	const setActive = ({ isActive }) => (isActive ? 'active' : 'undefined');
 	const logOut = () => {
 		setUsuario(null);
@@ -14,7 +13,8 @@ export default function Navbar() {
 	return (
 		<NavbarB
 			expand='lg'
-			className='bg-body-tertiary'>
+			className='bg-body-tertiary navbarB'>
+			
 			<Container fluid>
 				<NavbarB.Brand className='logo'>
 					<NavLink
@@ -27,13 +27,6 @@ export default function Navbar() {
 				<NavbarB.Collapse className='justify-content-end '>
 					{!usuario ? (
 						<>
-							<NavLink to={'/'}>
-								<Button
-									className='m-1'
-									variant='outline-light'>
-									Inicio
-								</Button>
-							</NavLink>
 							<NavLink to={'/register'}>
 								<Button
 									className='m-1'
@@ -54,15 +47,13 @@ export default function Navbar() {
 							<NavLink to={'/profile'}>
 								{' '}
 								<Button
-									className='m-1'
-									variant='outline-light'>
-									Perfil
+									className='m-1 primary-btn'>
+									Mi Perfil
 								</Button>{' '}
 							</NavLink>
 							<NavLink to={'/'}>
 								<Button
-									className='m-1'
-									variant='outline-danger'
+									className='m-1 danger-btn'
 									onClick={logOut}>
 									Cerrar sesión
 								</Button>

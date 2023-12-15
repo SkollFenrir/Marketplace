@@ -9,7 +9,6 @@ export default function InputSell() {
 					//onChange={} todavía no se usará
 					placeholder='Polera Pumba'
 					aria-label='Polera Pumba'
-					aria-aria-describedby='basic-addon1'
 				/>
 			</InputGroup>
 			<InputGroup className='mb-3'>
@@ -18,7 +17,6 @@ export default function InputSell() {
 					// onChange={} todavía no se usará
 					placeholder='Color, tamaño...'
 					aria-label='Color, tamaño...'
-					aria-aria-describedby='basic-addon2'
 				/>
 			</InputGroup>
 			<InputGroup className='mb-3'>
@@ -27,7 +25,6 @@ export default function InputSell() {
 					// onChange={} todavía no se usará
 					placeholder='Url de la imagen'
 					aria-label='Url de la imagen'
-					aria-aria-describedby='basic-addon3'
 				/>
 			</InputGroup>
 			<InputGroup className='mb-3'>
@@ -36,10 +33,9 @@ export default function InputSell() {
 					// onChange={} todavía no se usará
 					placeholder='20000'
 					aria-label='20000'
-					aria-aria-describedby='basic-addon4'
 				/>
 			</InputGroup>
-			<Button variant='outline-primary' /* onClick={} */>Agregar</Button>
+			<Button className='primary-btn' /* onClick={} */>Publicar producto</Button>
 		</>
 	);
 }

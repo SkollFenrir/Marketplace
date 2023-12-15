@@ -1,12 +1,18 @@
+import Footer from "../components/Footer";
+import { Container } from "react-bootstrap";
+
 export default function Home() {
     return (
-      <div className="py-5">
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}>
+      <Container className="py-5 m-auto">
         <h1>
           Bienvenido a <span className="fw-bold">AVDG-Place</span>
         </h1>
-        <h4>
+        <h5>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, eius. <br /> Lorem ipsum dolor sit amet.
-        </h4>
+        </h5>
+      </Container>
+      <Footer></Footer>
       </div>
     );
   }
