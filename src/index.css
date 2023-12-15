@@ -79,3 +79,14 @@ body {
 .card-body {
 	/* width: auto; // de adorno */
 }
+
+.like-btn {
+	position: absolute; 
+	top: 10px;
+	right: 10px
+}
+
+.card {  /* esto me lo entregó GPT para hacer que el corazón de Like se pusiera encima, pero aún así comentado, funciona */
+	width: 18rem; 
+	position: relative
+}
