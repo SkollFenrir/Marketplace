@@ -18,19 +18,19 @@ const Product = () => {
           <div className="square-image-container">
           <img
             className="img-fluid rounded"
-            src={currentProduct.img}
-            alt={currentProduct.title}
+            src={currentProduct.url_img}
+            alt={currentProduct.titulo}
             />
           </div>
         </Col>
         <Col md={7} >
           <Card.Body md={7} className='card-body'>
-            <Card.Title className="fw-bolder first-let-cap">{currentProduct.title}</Card.Title>
+            <Card.Title className="fw-bolder first-let-cap">{currentProduct.titulo}</Card.Title>
 
-            <Card.Text>{currentProduct.desc}</Card.Text>
+            <Card.Text>{currentProduct.descripcion}</Card.Text>
             
             <div className="d-flex justify-content-between">
-              <div className="fw-bold fs-4">Precio: ${currentProduct.price.toLocaleString()}</div>
+              <div className="fw-bold fs-4">Precio: ${currentProduct.precio.toLocaleString()}</div>
               <Button className="danger-btn">
                 Eliminar producto ❌
               </Button>
