@@ -8,11 +8,11 @@ const CardP = ({ product }) => {
     const navigateProduct = (id) => {
         navigate(`/Product/${id}`);
     };
-    const { id, img, title, desc, price, status } = product;
+    const { id, url_img, titulo, descripcion, precio, estado } = product;
 
     return (
         <Card className='card'>
-            <Card.Img variant='top' src={img} />
+            <Card.Img variant='top' src={url_img} />
             
             <div className='like-btn'>
                 <Heart 
@@ -21,12 +21,12 @@ const CardP = ({ product }) => {
 					></Heart>
             </div>
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text>{desc}</Card.Text>
+                <Card.Title>{titulo}</Card.Title>
+                <Card.Text>{descripcion}</Card.Text>
                 <Card.Body>
                     <Button className='primary-btn' onClick={() => navigateProduct(id)} >Ver detalle</Button>
-					<Card.Text>{price}</Card.Text>
-                    <Card.Text>{status}</Card.Text>
+					<Card.Text>{precio}</Card.Text>
+                    <Card.Text>{estado}</Card.Text>
                 </Card.Body>
             </Card.Body>
         </Card>

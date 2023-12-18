@@ -16,19 +16,20 @@ import NotFound from './views/NotFound';
 import MyProducts from './views/MyProducts';
 import Sell from './views/Sell';
 import PrivateRoute from './utils/PrivateRoute';
+import { getProducts } from './axios/axios';
 
 function App() {
 	const [usuario, setUsuario] = useState();
 	const [products, setProducts] = useState([]);
 
-	const getData = async () => {
+	/* const getData = async () => {
 		let res = await fetch('/products.json');
 		let data = await res.json();
 		setProducts(data);
 	};
-
+ */
 	useEffect(() => {
-		getData();
+		getProducts(setProducts)
 	}, []);
 
 	return (
