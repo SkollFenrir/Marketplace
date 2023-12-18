@@ -13,9 +13,9 @@ const getUserData = async (state, token) => {
 	const endPoint = '/profile';
 	console.log( 'El valor del token: ' + token);
 	try {
-		const { data } = await axios.get(url + endPoint, /* {
+		const { data } = await axios.get(url + endPoint, {
 			headers: { Authorization: 'Bearer ' + token },
-		} */);
+		});
 		state(data);
 	} catch (error) {
 		console.error('Error en la solicitud a /profile:', error);
@@ -38,7 +38,7 @@ const postLogin = async (credentials) => {
 	try {
 		const { data } = await axios.post(url + endPoint, credentials);
 		console.log('Usuario identificado');
-		window.localStorage.setItem('token', JSON.stringify(data));
+		window.localStorage.setItem('token', data);
 		return data;
 	} catch ({ response: { data: message } }) {
 		alert(message.message);

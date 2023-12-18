@@ -1,9 +1,0 @@
-{
-	"id": "1",
-	"token": "analace",
-	"nombre": "John",
-	"apellido": "Doe",
-	"email": "johndoe@gmail.com",
-	"genero": "masculino",
-	"password": "123456"
-}
