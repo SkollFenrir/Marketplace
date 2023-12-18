@@ -3,15 +3,17 @@ const url = 'http://localhost:3000';
 
 const getProducts = async (state) => {
 	const endPoint = '/gallery';
-	const { data } = await axios.get(url + endPoint, /* {
+	const { data } = await axios.get(
+		url + endPoint /* {
 		headers: { Authorization: 'Bearer ' + token },
-	} */);
+	} */
+	);
 	state(data);
 };
 
 const getUserData = async (state, token) => {
 	const endPoint = '/profile';
-	console.log( 'El valor del token: ' + token);
+	console.log('El valor del token: ' + token);
 	try {
 		const { data } = await axios.get(url + endPoint, {
 			headers: { Authorization: 'Bearer ' + token },
