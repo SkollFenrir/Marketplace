@@ -15,7 +15,7 @@ body {
 
 .undefined {
 	text-decoration: none;
-	color: cornflowerblue;
+	color:#1F2421;
 }
 
 .paddingCollaps {
@@ -23,7 +23,7 @@ body {
 }
 
 .card {
-	background-color: #EFF0D1;
+	background-color: #9CC5A1;
 	color: #666
 }
 
@@ -45,7 +45,7 @@ body {
 }
 
 .table {
-	background-color: #EFF0D1; 
+	background-color: #9CC5A1; 
 	color: #666; 
 	border-spacing: 0;
 	border-collapse: separate;
@@ -56,13 +56,18 @@ body {
 }
 
 .primary-btn {
-	background-color: #77b6eaff; 
-	border-color: #77b6eaff
+	background-color: #49A078; 
+	border-color: #49A078
+}
+
+.primary-btn:hover {
+	background-color: #307a58; 
+	border-color: #307a58
 }
 
 .danger-btn {
-	background-color: #561d25ff; 
-	border-color: #561d25ff
+	background-color: #1F2421; 
+	border-color: #1F2421
 }
 
 .danger-btn:hover {
@@ -71,13 +76,13 @@ body {
 }
 
 .navbarB { 
-	background-color: #acc3a6ff
+	background-color: #49A078
 }
 
 .w250 { width: 250px }
 
-.card-body {
-	/* width: auto; // de adorno */
+.card-body-product {
+	background-color: #9CC5A1;
 }
 
 .like-btn {
@@ -90,3 +95,18 @@ body {
 	width: 18rem; 
 	position: relative
 }
+
+.navbar-brand {
+	color: #9CC5A1!important
+}
+
+.container-product {
+	display: flex;
+  	flex-direction: column;
+  	min-height: 100vh;
+
+}
+
+.card-body-product {
+	flex: 1;
+  }

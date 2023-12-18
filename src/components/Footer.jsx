@@ -5,7 +5,7 @@ import { faFacebookSquare, faTwitterSquare, faInstagramSquare } from '@fortaweso
 
 const Footer = () => {
   const footerStyle = {
-    backgroundColor: '#acc3a6ff',
+    backgroundColor: '#49A078',
     padding: '20px',
     color: 'white',
     lineHeight: '1',
