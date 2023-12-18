@@ -1,7 +1,6 @@
 import axios from 'axios';
 const url = 'http://localhost:3000';
 
-
 const getProducts = async (state) => {
 	const endPoint = '/gallery';
 	const { data } = await axios.get(url + endPoint, /* {
