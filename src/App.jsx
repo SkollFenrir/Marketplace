@@ -22,12 +22,6 @@ function App() {
 	const [usuario, setUsuario] = useState();
 	const [products, setProducts] = useState([]);
 
-	/* const getData = async () => {
-		let res = await fetch('/products.json');
-		let data = await res.json();
-		setProducts(data);
-	};
- */
 	useEffect(() => {
 		getProducts(setProducts)
 	}, []);
