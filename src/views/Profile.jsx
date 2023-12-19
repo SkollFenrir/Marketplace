@@ -1,19 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../Contexts/AuthContext.js';
 import { Button, Col, Container, Row, Table } from 'react-bootstrap';
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import axios from 'axios';
 
 export default function Profile() {
-	const [usuario, setUsuarioLocal] = useState({
-		id: null,
-		nombre: '',
-		apellido: '',
-		correo: '',
-		contrasena: '',
-		genero: '',
-	});
+	const [usuario, setUsuarioLocal] = useState({});
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
 
@@ -23,7 +16,7 @@ export default function Profile() {
 		const token = localStorage.getItem('token');
 
 		try {
-			const  {data} = await axios.get(urlServer + endpoint, {
+			const { data } = await axios.get(urlServer + endpoint, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
 			setUsuarioGlobal(data[0]);
