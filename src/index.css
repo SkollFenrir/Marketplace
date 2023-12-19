@@ -15,7 +15,7 @@ body {
 
 .undefined {
 	text-decoration: none;
-	color:#1F2421;
+	color:#9CC5A1;
 }
 
 .paddingCollaps {
@@ -96,9 +96,6 @@ body {
 	position: relative
 }
 
-.navbar-brand {
-	color: #9CC5A1!important
-}
 
 .container-product {
 	display: flex;
