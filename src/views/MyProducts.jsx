@@ -1,39 +1,62 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import CardP from '../components/CardP';
-import ProductContext from '../Contexts/ProductContext';
-import React, { useContext } from 'react';
+import AuthContext from '../Contexts/AuthContext';
+import React, { useContext, useState } from 'react';
 import Footer from '../components/Footer';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 export default function MyProducts() {
-  const { products } = useContext(ProductContext);
+	const [products, setMyProducts] = useState([]);
+	const { usuario } = useContext(AuthContext);
+	
 
-  const userId = 1; // Aquí se debería usar el AuthContext para variar según el usuario
-  const myProducts = products.filter(product => product.user_id === userId);
+	const getMyproducts = async () => {
+		const urlServer = 'http://localhost:3000';
+		const endpoint = '/my-products';
+		const token = localStorage.getItem('token');
+    
+		try {
+      console.log(usuario.id)
+			const { data } = await axios.get(urlServer + endpoint,  {
+        params: {usuario_id: 6},
+				headers: { Authorization: 'Bearer ' + token },
+			} );
+			setMyProducts(data)
+		} catch (error ) {
+			alert(' 🙁');
+			console.log(error);
+		}
+	};
 
-  // Calculando la cantidad de columnas vacías necesarias para completar la fila
-  const emptyColsCount = (4 - (myProducts.length % 4)) % 4;
-  const emptyCols = Array.from({ length: emptyColsCount }).map((_, index) => (
-    <Col key={`empty_${index}`}></Col>
-  ));
+  useEffect(() => {
+		getMyproducts();
+	}, []);
 
-  return (
-    <>
-      <Container className='Gallery-container'>
-        <Row>
-          <h2>Revisa tus productos publicados en nuestro sitio</h2>
-        </Row>
-        <Row className='g-4'>
-          {/* Mapeando los productos del usuario */}
-          {myProducts.map((p, i) => (
-            <Col key={i}>
-              <CardP product={p} />
-            </Col>
-          ))}
-          {/* Agregando columnas vacías para completar la fila */}
-          {emptyCols}
-        </Row>
-      </Container>
-      <Footer />
-    </>
-  );
+	// Calculando la cantidad de columnas vacías necesarias para completar la fila
+	const emptyColsCount = (4 - (products.length % 4)) % 4;
+	const emptyCols = Array.from({ length: emptyColsCount }).map((_, index) => (
+		<Col key={`empty_${index}`}></Col>
+	));
+
+	return (
+		<>
+			<Container className='Gallery-container'>
+				<Row>
+					<h2>Revisa tus productos publicados en nuestro sitio</h2>
+				</Row>
+				<Row className='g-4'>
+					{/* Mapeando los productos del usuario */}
+					{products.map((p, i) => (
+						<Col key={i}>
+							<CardP product={p} />
+						</Col>
+					))}
+					{/* Agregando columnas vacías para completar la fila */}
+					{emptyCols}
+				</Row>
+			</Container>
+			<Footer />
+		</>
+	);
 }
