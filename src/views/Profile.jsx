@@ -44,7 +44,7 @@ export default function Profile() {
 
 	return (
 		<div
-			style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}>
+			style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}> 
 			<Container className='mt-4 m-auto'>
 				<h1 className='logo mt-5'>
 					Bienvenido, <span className='fw-bold'>{usuario.nombre} !</span>
