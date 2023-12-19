@@ -19,7 +19,7 @@ export default function MyProducts() {
 		try {
       console.log(usuario.id)
 			const { data } = await axios.get(urlServer + endpoint,  {
-        params: {usuario_id: 6},
+        params: {usuario_id: usuario.id},
 				headers: { Authorization: 'Bearer ' + token },
 			} );
 			setMyProducts(data)
