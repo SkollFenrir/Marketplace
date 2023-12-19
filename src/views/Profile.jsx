@@ -30,7 +30,6 @@ export default function Profile() {
 	useEffect(() => {
 		getUsuarioData();
 	}, []);
-	console.log(usuario.nombre + 'soy usuario.nombre');
 
 	const navigateMyProduct = () => {
 		navigate(`/my-products`);
