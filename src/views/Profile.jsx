@@ -5,20 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import axios from 'axios';
 import ProductContext from '../Contexts/ProductContext.js';
-import { getProducts } from '../axios/axios.js';
-
 
 export default function Profile() {
 	const [usuario, setUsuarioLocal] = useState({});
-	const {setProducts} = useContext(ProductContext)
+	const { setProducts } = useContext(ProductContext);
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
+	const token = localStorage.getItem('token');
+	const urlServer = 'http://localhost:3000';
+
 
 	const getUsuarioData = async () => {
-		const urlServer = 'http://localhost:3000';
 		const endpoint = '/profile';
-		const token = localStorage.getItem('token');
-
 		try {
 			const { data } = await axios.get(urlServer + endpoint, {
 				headers: { Authorization: 'Bearer ' + token },
@@ -31,11 +29,17 @@ export default function Profile() {
 		}
 	};
 
+	const getProducts = async () => {
+		const endPoint = '/gallery';
+		const { data } = await axios.get(urlServer + endPoint, {
+			headers: { Authorization: 'Bearer ' + token },
+		});
+		setProducts(data);
+	};
+
 	useEffect(() => {
 		getUsuarioData();
-	}, []);
-	useEffect(() => {
-		getProducts(setProducts)
+		getProducts();
 	}, []);
 
 	const navigateMyProduct = () => {
@@ -50,7 +54,7 @@ export default function Profile() {
 
 	return (
 		<div
-			style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}> 
+			style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}>
 			<Container className='mt-4 m-auto'>
 				<h1 className='logo mt-5'>
 					Bienvenido, <span className='fw-bold'>{usuario.nombre} !</span>
