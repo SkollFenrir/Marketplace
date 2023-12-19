@@ -35,16 +35,18 @@ const postRegister = async (user) => {
 	}
 };
 
-const postLogin = async (credentials) => {
+const postLogin = async (usuario) => {
 	const endPoint = '/login';
 	try {
-		const { data } = await axios.post(url + endPoint, credentials);
-		console.log('Usuario identificado');
-		window.localStorage.setItem('token', data);
-		return data;
+		const {  data: token } = await axios.post(url + endPoint, usuario);
+		alert('Usuario identificado con éxito 😀');
+		/* console.log('Usuario identificado'); */
+		window.localStorage.setItem('token', token);
 	} catch ({ response: { data: message } }) {
-		alert(message.message);
+		alert(message.message + ' 🙁');
 		console.log(message);
+		/* alert(message.message);
+		console.log(message); */
 	}
 };
 
