@@ -17,7 +17,6 @@ export default function MyProducts() {
 		const token = localStorage.getItem('token');
     
 		try {
-      console.log(usuario.id)
 			const { data } = await axios.get(urlServer + endpoint,  {
         params: {usuario_id: usuario.id},
 				headers: { Authorization: 'Bearer ' + token },
