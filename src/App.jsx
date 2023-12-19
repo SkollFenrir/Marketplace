@@ -16,20 +16,17 @@ import NotFound from './views/NotFound';
 import MyProducts from './views/MyProducts';
 import Sell from './views/Sell';
 import PrivateRoute from './utils/PrivateRoute';
-import { getProducts } from './axios/axios';
 
 function App() {
 	const [usuario, setUsuario] = useState();
 	const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		getProducts(setProducts)
-	}, []);
+	
 
 	return (
 		<div className='App'>
 			<AuthContext.Provider value={{ usuario, setUsuario }}>
-				<ProductContext.Provider value={{ products }}>
+				<ProductContext.Provider value={{ products, setProducts }}>
 					<BrowserRouter>
 						<Navbar />
 						<Routes>

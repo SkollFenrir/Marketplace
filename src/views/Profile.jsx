@@ -4,9 +4,13 @@ import { Button, Col, Container, Row, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import axios from 'axios';
+import ProductContext from '../Contexts/ProductContext.js';
+import { getProducts } from '../axios/axios.js';
+
 
 export default function Profile() {
 	const [usuario, setUsuarioLocal] = useState({});
+	const {setProducts} = useContext(ProductContext)
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
 
@@ -29,6 +33,9 @@ export default function Profile() {
 
 	useEffect(() => {
 		getUsuarioData();
+	}, []);
+	useEffect(() => {
+		getProducts(setProducts)
 	}, []);
 
 	const navigateMyProduct = () => {
