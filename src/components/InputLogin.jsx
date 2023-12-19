@@ -24,7 +24,7 @@ export default function InputLogin() {
 			alert('Usuario identificado con éxito 😀');
 			window.localStorage.setItem('token', token);
 			console.log( usuario );
-			setUsuario( token);
+			setUsuario( token); // única diferencia con SJ, allá es setUsuario()
 			navigate('/profile');
 		} catch (error) {
 			alert('Hubo un error con los datos entregados. Vuelve a intentarlo.');

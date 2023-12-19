@@ -11,8 +11,9 @@ const getProducts = async (state) => {
 	state(data);
 };
 
-const getUserData = async (state, token) => {
+const getUserData = async (state) => {
 	const endPoint = '/profile';
+    const token = window.localStorage.getItem("token");
 	console.log('El valor del token: ' + token);
 	try {
 		const { data } = await axios.get(url + endPoint, {
