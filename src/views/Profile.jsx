@@ -68,14 +68,14 @@ export default function Profile() {
 									className='mt-2 primary-btn w250'
 									variant='outline-light'
 									onClick={navigateGallery}>
-									Ir a la Tienda
+									Tienda
 								</Button>
 								<Row>
 									<Button
 										className='mt-2 primary-btn w250'
 										variant='outline-light'
 										onClick={navigateMyProduct}>
-										Ver tus productos
+										Mis Productos
 									</Button>
 								</Row>
 								<Row>
@@ -83,7 +83,7 @@ export default function Profile() {
 										className='mt-2 primary-btn w250'
 										variant='outline-light'
 										onClick={navigateMyFavorites}>
-										Ver tus productos
+										Favoritos
 									</Button>
 								</Row>
 							</Row>
@@ -91,9 +91,8 @@ export default function Profile() {
 								<Button
 									className='mt-2 primary-btn w250'
 									variant='outline-light'
-									style={{}}
 									onClick={navigateSell}>
-									Vender / Publicar
+									Publicar
 								</Button>
 							</Row>
 						</div>
