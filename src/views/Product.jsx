@@ -31,9 +31,9 @@ const Product = () => {
             
             <div className="d-flex justify-content-between">
               <div className="fw-bold fs-4">Precio: ${currentProduct.precio.toLocaleString()}</div>
-              <Button className="danger-btn">
-                Eliminar producto ❌
-              </Button>
+              <Button className="danger-btn">Eliminar producto ❌</Button>
+              <Button className='primary-btn' onClick={() => addToFavorites(id)} >Añadir a Favoritos ❤</Button>
+              <Button className='primary-btn' onClick={() => removeFromFavorites(id)} >Eliminar de Favoritos ❌</Button>
             </div>
           </Card.Body>
         </Col>
