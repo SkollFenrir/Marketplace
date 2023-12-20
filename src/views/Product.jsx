@@ -29,7 +29,18 @@ const Product = () => {
 		}
 	};
 
-	const removeFromFavorites = async () => {};
+	const removeFromFavorites = async () => {
+		try {
+			await axios.delete(urlServer + endPoint, {
+				params: { usuario_id: usuario.id, producto_id: currentProduct.id },
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			navigate('/my-favorites');
+			alert('Eliminado de favoritos');
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div>
