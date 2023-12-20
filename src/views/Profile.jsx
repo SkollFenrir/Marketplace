@@ -8,12 +8,11 @@ import ProductContext from '../Contexts/ProductContext.js';
 
 export default function Profile() {
 	const [usuario, setUsuarioLocal] = useState({});
-	const { setProducts } = useContext(ProductContext);
+	const { setProducts, setFav } = useContext(ProductContext);
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
-
 
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';
@@ -32,9 +31,17 @@ export default function Profile() {
 	const getProducts = async () => {
 		const endPoint = '/gallery';
 		const { data } = await axios.get(urlServer + endPoint, {
+			params: { usuario_id: usuario.id },
 			headers: { Authorization: 'Bearer ' + token },
 		});
 		setProducts(data);
+	};
+
+	const getMyFavorites = async () => {
+		const endPoint = '/myFavorites';
+		const { data } = await axios.get(urlServer + endPoint, {
+			headers: { Authorization: 'Bearer ' + token },
+		});
 	};
 
 	useEffect(() => {

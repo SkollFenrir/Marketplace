@@ -5,13 +5,14 @@ import React, { useContext } from 'react';
 import Footer from '../components/Footer';
 
 export default function Gallery() {
-  const { products } = useContext(ProductContext);
+  const { products, fav } = useContext(ProductContext);
 
   // Calculando la cantidad de columnas vacías necesarias para completar la fila
   const emptyColsCount = (4 - (products.length % 4)) % 4;
   const emptyCols = Array.from({ length: emptyColsCount }).map((_, index) => (
     <Col key={index}></Col>
   ));
+  console.log({fav})
 
   return (
     <>
@@ -23,7 +24,7 @@ export default function Gallery() {
           {/* Mapeando productos */}
           {products.map((p, i) => (
             <Col key={i}>
-              <CardP product={p} />
+              <CardP product={p} filled={fav} />
             </Col>
           ))}
           {/* Agregando columnas vacías para completar la fila */}

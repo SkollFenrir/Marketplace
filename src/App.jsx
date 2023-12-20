@@ -3,8 +3,7 @@ import AuthContext from './Contexts/AuthContext';
 import ProductContext from './Contexts/ProductContext';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './views/Home';
 import RegisterForm from './views/Register';
@@ -15,18 +14,18 @@ import Product from './views/Product';
 import NotFound from './views/NotFound';
 import MyProducts from './views/MyProducts';
 import Sell from './views/Sell';
-import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
 	const [usuario, setUsuario] = useState();
 	const [products, setProducts] = useState([]);
+	const [fav, setFav] = useState([]);
 
 	
 
 	return (
 		<div className='App'>
 			<AuthContext.Provider value={{ usuario, setUsuario }}>
-				<ProductContext.Provider value={{ products, setProducts }}>
+				<ProductContext.Provider value={{ products, setProducts, fav, setFav }}>
 					<BrowserRouter>
 						<Navbar />
 						<Routes>
@@ -60,12 +59,8 @@ function App() {
 							/>
 							<Route
 								path='/profile'
-								element={<PrivateRoute />}>
-								<Route
-									path='/profile'
-									element={<Profile />}
-								/>
-							</Route>
+								element={<Profile />}
+							/>
 							<Route
 								path='/*'
 								element={<NotFound />}
