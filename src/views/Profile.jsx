@@ -42,6 +42,9 @@ export default function Profile() {
 	const navigateMyProduct = () => {
 		navigate(`/my-products`);
 	};
+	const navigateMyFavorites = () => {
+		navigate(`/my-favorites`);
+	};
 	const navigateSell = () => {
 		navigate(`/sell`);
 	};
@@ -72,6 +75,14 @@ export default function Profile() {
 										className='mt-2 primary-btn w250'
 										variant='outline-light'
 										onClick={navigateMyProduct}>
+										Ver tus productos
+									</Button>
+								</Row>
+								<Row>
+									<Button
+										className='mt-2 primary-btn w250'
+										variant='outline-light'
+										onClick={navigateMyFavorites}>
 										Ver tus productos
 									</Button>
 								</Row>
