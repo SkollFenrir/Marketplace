@@ -16,6 +16,22 @@ const Product = () => {
 	const navigate = useNavigate();
 
 	const currentProduct = products.find((p) => p.id === Number(id));
+
+	const putEstado = async () => {
+		const estado = {
+			estado: false,
+		};
+		console.log(currentProduct.id)
+		try {
+			await axios.put(urlServer + endPoint, estado, {
+				params:{producto_id: currentProduct.id},
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			navigate('/gallery')
+			alert('Producto sin stock')
+		} catch (error) {}
+	};
+
 	const addToFavorites = async () => {
 		const ids = { usuario_id: usuario.id, producto_id: currentProduct.id };
 		try {
@@ -71,7 +87,13 @@ const Product = () => {
 								<div className='fw-bold fs-4'>
 									Precio: ${currentProduct.precio.toLocaleString()}
 								</div>
-								<Button className='danger-btn'>Eliminar producto ❌</Button>
+								<h2>{currentProduct.estado}</h2>
+
+								<Button
+									onClick={() => putEstado()}
+									className='danger-btn'>
+									Eliminar producto ❌
+								</Button>
 								<Button
 									className='primary-btn'
 									onClick={() => addToFavorites()}>
