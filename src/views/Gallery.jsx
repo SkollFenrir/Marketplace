@@ -7,12 +7,11 @@ import Footer from '../components/Footer';
 import axios from 'axios';
 
 export default function Gallery() {
-	const { products, setProducts, fav } = useContext(ProductContext);
+	const { products, setProducts } = useContext(ProductContext);
 	const { usuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
 
-  
 	const getProducts = async () => {
 		const endPoint = '/gallery';
 		const { data } = await axios.get(urlServer + endPoint, {
@@ -41,10 +40,7 @@ export default function Gallery() {
 					{/* Mapeando productos */}
 					{products.map((p, i) => (
 						<Col key={i}>
-							<CardP
-								product={p}
-								filled={fav}
-							/>
+							<CardP product={p} />
 						</Col>
 					))}
 					{/* Agregando columnas vacías para completar la fila */}

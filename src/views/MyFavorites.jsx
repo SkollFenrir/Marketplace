@@ -7,29 +7,27 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 export default function MyFavorites() {
-
 	const [products, setMyProducts] = useState([]);
 	const { usuario } = useContext(AuthContext);
-	
 
 	const getMyproducts = async () => {
 		const urlServer = 'http://localhost:3000';
-		const endpoint = '/my-products';
+		const endpoint = '/my-favorites';
 		const token = localStorage.getItem('token');
-    
+
 		try {
-			const { data } = await axios.get(urlServer + endpoint,  {
-        params: {usuario_id: usuario.id},
+			const { data } = await axios.get(urlServer + endpoint, {
+				params: { usuario_id: usuario.id },
 				headers: { Authorization: 'Bearer ' + token },
-			} );
-			setMyProducts(data)
-		} catch (error ) {
+			});
+			setMyProducts(data);
+		} catch (error) {
 			alert(' 🙁');
 			console.log(error);
 		}
 	};
 
-  useEffect(() => {
+	useEffect(() => {
 		getMyproducts();
 	}, []);
 

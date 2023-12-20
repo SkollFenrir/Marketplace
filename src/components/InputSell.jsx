@@ -26,7 +26,7 @@ export default function InputSell() {
 			await axios.post(urlServer + endPoint, product, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			alert('Tu producto ya está publicado ')
+			alert(' Producto publicado 😎 ')
 			navigate('/profile')
 		} catch (error) {
 			console.log(error);

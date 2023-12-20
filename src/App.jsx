@@ -19,14 +19,11 @@ import MyFavorites from './views/MyFavorites';
 function App() {
 	const [usuario, setUsuario] = useState();
 	const [products, setProducts] = useState([]);
-	const [fav, setFav] = useState([]);
-
-	
 
 	return (
 		<div className='App'>
 			<AuthContext.Provider value={{ usuario, setUsuario }}>
-				<ProductContext.Provider value={{ products, setProducts, fav, setFav }}>
+				<ProductContext.Provider value={{ products, setProducts }}>
 					<BrowserRouter>
 						<Navbar />
 						<Routes>
