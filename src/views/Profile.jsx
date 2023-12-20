@@ -8,7 +8,7 @@ import ProductContext from '../Contexts/ProductContext.js';
 
 export default function Profile() {
 	const [usuario, setUsuarioLocal] = useState({});
-	const { setProducts, setFav } = useContext(ProductContext);
+	const { setFav } = useContext(ProductContext);
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');
@@ -23,18 +23,9 @@ export default function Profile() {
 			setUsuarioGlobal(data[0]);
 			setUsuarioLocal(data[0]);
 		} catch ({ response: { data: message } }) {
-			alert(message + ' 🙁');
+			alert( '🙁');
 			console.log(message);
 		}
-	};
-
-	const getProducts = async () => {
-		const endPoint = '/gallery';
-		const { data } = await axios.get(urlServer + endPoint, {
-			params: { usuario_id: usuario.id },
-			headers: { Authorization: 'Bearer ' + token },
-		});
-		setProducts(data);
 	};
 
 	const getMyFavorites = async () => {
@@ -46,7 +37,6 @@ export default function Profile() {
 
 	useEffect(() => {
 		getUsuarioData();
-		getProducts();
 	}, []);
 
 	const navigateMyProduct = () => {
