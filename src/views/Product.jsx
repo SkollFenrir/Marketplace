@@ -58,6 +58,33 @@ const Product = () => {
 		}
 	};
 
+
+// para el renderizado condicional de botones Añadir/Eliminar de Favoritos
+  const [isInFavorites, setIsInFavorites] = useState(false);
+
+  useEffect(() => {
+      const checkFavoriteStatus = async () => {
+          try {
+              const response = await axios.get(`localhost:3000/isFavorite`, {
+                  params: {
+                      usuario_id: usuario.id,
+                      producto_id: currentProduct.id
+                  },
+                  headers: { Authorization: 'Bearer ' + token },
+              });
+              setIsInFavorites(response.data.isInFavorites); // asumiendo que el backend devuelve un booleano
+          } catch (error) {
+              console.log(error);
+          }
+      };
+
+      checkFavoriteStatus();
+  }, [currentProduct.id, token, urlServer, usuario.id]);
+
+
+
+
+
 	return (
 		<div>
 			<Card className='w-50 mx-auto mt-4 mb-5'>
@@ -89,21 +116,27 @@ const Product = () => {
 								</div>
 								<h2>{currentProduct.estado}</h2>
 
-								<Button
+								{/* {usuario.id == producto.usuario_id ? */} 
+                <Button
 									onClick={() => putEstado()}
 									className='danger-btn'>
 									Eliminar producto ❌
-								</Button>
-								<Button
+								</Button> 
+                {/* : <></> } */}
+								
+               {/*  {!isInFavorites ?  */}
+                <Button
 									className='primary-btn'
 									onClick={() => addToFavorites()}>
 									Añadir a Favoritos ❤
-								</Button>
+								</Button> 
+                {/* :  */}
 								<Button
 									className='primary-btn'
 									onClick={() => removeFromFavorites()}>
 									Eliminar de Favoritos ❌
 								</Button>
+                {/* } */}
 							</div>
 						</Card.Body>
 					</Col>
