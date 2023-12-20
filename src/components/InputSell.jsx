@@ -1,27 +1,44 @@
-import { useContext, useState } from 'react';
+import { useContext,useEffect, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import AuthContext from '../Contexts/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function InputSell() {
-	const { usuario } = useContext(AuthContext);
-	const [product, setProduct] = useState({
-		usuario_id: usuario.id,
-		estado: true,
-	});
-	const navigate = useNavigate();
+	const {  usuario ,setUsuario } = useContext(AuthContext);
+	const [user, setU] = useState({})
+ 	const navigate = useNavigate();
 	const handleSetProduct = ({ target: { value, name } }) => {
 		setProduct({
 			...product,
 			[name]: value,
 		});
 	};
-	
+	const token = localStorage.getItem('token');
+	const urlServer = 'http://localhost:3000';
+	const getUsuarioData = async () => {
+		const endpoint = '/profile';
+		try {
+			const { data } = await axios.get(urlServer + endpoint, {
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			setU(data[0]);
+		} catch (error) {
+			alert('🙁');
+			console.log(error);
+		}
+	};
+	useEffect(() => {
+		getUsuarioData();
+		console.log(user)
+	}, []);
+	const [product, setProduct] = useState({
+		usuario_id: usuario.id,
+		estado: true,
+	});
 	const postProduct = async () => {
-		const urlServer = "http://localhost:3000";
 		const endPoint = '/sell';
-		const token = localStorage.getItem('token');
+		console.log(product)
 		try {
 			await axios.post(urlServer + endPoint, product, {
 				headers: { Authorization: 'Bearer ' + token },

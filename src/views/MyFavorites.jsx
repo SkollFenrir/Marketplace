@@ -1,20 +1,31 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import CardP from '../components/CardP';
 import AuthContext from '../Contexts/AuthContext';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import axios from 'axios';
-import { useEffect } from 'react';
 
 export default function MyFavorites() {
 	const [products, setMyProducts] = useState([]);
-	const { usuario } = useContext(AuthContext);
-
+	const { usuario, setUsuario } = useContext(AuthContext);
+	const token = localStorage.getItem('token');
+	const urlServer = 'http://localhost:3000';
+	
+	const getUsuarioData = async () => {
+		const endpoint = '/profile';
+		try {
+			const { data } = await axios.get(urlServer + endpoint, {
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			setUsuario(data[0]);
+		} catch ({ response: { data: message } }) {
+			alert('🙁');
+			console.log(message);
+		}
+	};
+	
 	const getMyproducts = async () => {
-		const urlServer = 'http://localhost:3000';
 		const endpoint = '/my-favorites';
-		const token = localStorage.getItem('token');
-
 		try {
 			const { data } = await axios.get(urlServer + endpoint, {
 				params: { usuario_id: usuario.id },
@@ -22,14 +33,15 @@ export default function MyFavorites() {
 			});
 			setMyProducts(data);
 		} catch (error) {
-			alert(' 🙁');
+			alert(error);
 			console.log(error);
 		}
 	};
-
 	useEffect(() => {
+		getUsuarioData();
 		getMyproducts();
 	}, []);
+
 
 	// Calculando la cantidad de columnas vacías necesarias para completar la fila
 	const emptyColsCount = (4 - (products.length % 4)) % 4;

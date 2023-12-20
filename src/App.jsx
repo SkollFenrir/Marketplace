@@ -17,7 +17,7 @@ import Sell from './views/Sell';
 import MyFavorites from './views/MyFavorites';
 
 function App() {
-	const [usuario, setUsuario] = useState();
+	const [usuario, setUsuario] = useState({});
 	const [products, setProducts] = useState([]);
 
 	return (

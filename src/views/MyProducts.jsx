@@ -8,14 +8,27 @@ import { useEffect } from 'react';
 
 export default function MyProducts() {
 	const [products, setMyProducts] = useState([]);
-	const { usuario } = useContext(AuthContext);
+	const { usuario , setUsuario } = useContext(AuthContext);
 	
-
+	const urlServer = 'http://localhost:3000';
+	const token = localStorage.getItem('token');
+	const getUsuarioData = async () => {
+		const endpoint = '/profile';
+		try {
+			const { data } = await axios.get(urlServer + endpoint, {
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			setUsuario(data[0]);
+		} catch ({ response: { data: message } }) {
+			alert('🙁');
+			console.log(message);
+		}
+	};
+	useEffect(() => {
+		getUsuarioData();
+	}, []);
 	const getMyproducts = async () => {
-		const urlServer = 'http://localhost:3000';
 		const endpoint = '/my-products';
-		const token = localStorage.getItem('token');
-    
 		try {
 			const { data } = await axios.get(urlServer + endpoint,  {
         params: {usuario_id: usuario.id},

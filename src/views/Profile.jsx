@@ -8,7 +8,6 @@ import ProductContext from '../Contexts/ProductContext.js';
 
 export default function Profile() {
 	const [usuario, setUsuarioLocal] = useState({});
-	const { setFav } = useContext(ProductContext);
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');

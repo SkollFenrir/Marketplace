@@ -8,9 +8,24 @@ import axios from 'axios';
 
 export default function Gallery() {
 	const { products, setProducts } = useContext(ProductContext);
-	const { usuario } = useContext(AuthContext);
+	const { usuario , setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
+	const getUsuarioData = async () => {
+		const endpoint = '/profile';
+		try {
+			const { data } = await axios.get(urlServer + endpoint, {
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			setUsuario(data[0]);
+		} catch ({ response: { data: message } }) {
+			alert('🙁');
+			console.log(message);
+		}
+	};
+	useEffect(() => {
+		getUsuarioData();
+	}, []);
 
 	const getProducts = async () => {
 		const endPoint = '/gallery';
