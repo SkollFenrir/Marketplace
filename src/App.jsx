@@ -16,6 +16,7 @@ import NotFound from './views/NotFound';
 import MyProducts from './views/MyProducts';
 import Sell from './views/Sell';
 import PrivateRoute from './utils/PrivateRoute';
+import MyFavorites from './views/MyFavorites';
 
 function App() {
 	const [usuario, setUsuario] = useState();
@@ -53,6 +54,10 @@ function App() {
 							<Route
 								path='/my-products'
 								element={<MyProducts />}
+							/>
+							<Route
+								path='/my-favorites'
+								element={<MyFavorites />}
 							/>
 							<Route
 								path='/product/:id'
