@@ -1,36 +1,57 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import CardP from '../components/CardP';
 import ProductContext from '../Contexts/ProductContext';
-import React, { useContext } from 'react';
+import AuthContext from '../Contexts/AuthContext.js';
+import React, { useContext, useEffect } from 'react';
 import Footer from '../components/Footer';
+import axios from 'axios';
 
 export default function Gallery() {
-  const { products } = useContext(ProductContext);
+	const { products, setProducts, fav } = useContext(ProductContext);
+	const { usuario } = useContext(AuthContext);
+	const token = localStorage.getItem('token');
+	const urlServer = 'http://localhost:3000';
 
-  // Calculando la cantidad de columnas vacías necesarias para completar la fila
-  const emptyColsCount = (4 - (products.length % 4)) % 4;
-  const emptyCols = Array.from({ length: emptyColsCount }).map((_, index) => (
-    <Col key={index}></Col>
-  ));
+  
+	const getProducts = async () => {
+		const endPoint = '/gallery';
+		const { data } = await axios.get(urlServer + endPoint, {
+			params: { usuario_id: usuario.id },
+			headers: { Authorization: 'Bearer ' + token },
+		});
+		setProducts(data);
+	};
+	useEffect(() => {
+		getProducts();
+	}, []);
 
-  return (
-    <>
-      <Container className='Gallery-container'>
-        <Row>
-          <h2>Revisa los productos publicados en nuestro sitio</h2>
-        </Row>
-        <Row className='g-4'>
-          {/* Mapeando productos */}
-          {products.map((p, i) => (
-            <Col key={i}>
-              <CardP product={p} />
-            </Col>
-          ))}
-          {/* Agregando columnas vacías para completar la fila */}
-          {emptyCols}
-        </Row>
-      </Container>
-      <Footer />
-    </>
-  );
+	// Calculando la cantidad de columnas vacías necesarias para completar la fila
+	const emptyColsCount = (4 - (products.length % 4)) % 4;
+	const emptyCols = Array.from({ length: emptyColsCount }).map((_, index) => (
+		<Col key={index}></Col>
+	));
+
+	return (
+		<>
+			<Container className='Gallery-container'>
+				<Row>
+					<h2>Revisa los productos publicados en nuestro sitio</h2>
+				</Row>
+				<Row className='g-4'>
+					{/* Mapeando productos */}
+					{products.map((p, i) => (
+						<Col key={i}>
+							<CardP
+								product={p}
+								filled={fav}
+							/>
+						</Col>
+					))}
+					{/* Agregando columnas vacías para completar la fila */}
+					{emptyCols}
+				</Row>
+			</Container>
+			<Footer />
+		</>
+	);
 }

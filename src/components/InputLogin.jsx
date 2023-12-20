@@ -23,7 +23,7 @@ export default function InputLogin() {
 			const { data: token } = await axios.post(url + endPoint, usuario);
 			alert('Usuario identificado con éxito 😀');
 			window.localStorage.setItem('token', token);
-			setUsuario( token); // única diferencia con SJ, allá es setUsuario()
+			setUsuario(); // única diferencia con SJ, allá es setUsuario()
 			navigate('/profile');
 		} catch (error) {
 			alert('Hubo un error con los datos entregados. Vuelve a intentarlo.');
