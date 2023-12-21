@@ -6,8 +6,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 export default function InputSell() {
-	const { usuario } = useContext(AuthContext);
-	const [user, setU] = useState({});
+	const { setUsuario } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const handleSetProduct = ({ target: { value, name } }) => {
 		setProduct({
@@ -23,8 +22,7 @@ export default function InputSell() {
 			const { data } = await axios.get(urlServer + endpoint, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			setUs
-			setU(data[0]);
+			setUsuario(data[0])
 		} catch (error) {
 			toast.error('Falló la obtención de los datos del usuario', {
 				position: 'top-center',
@@ -37,7 +35,6 @@ export default function InputSell() {
 		getUsuarioData();
 	}, []);
 	const [product, setProduct] = useState({
-		usuario_id: usuario.id,
 		estado: true,
 	});
 	const postProduct = async () => {
