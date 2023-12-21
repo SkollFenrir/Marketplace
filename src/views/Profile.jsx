@@ -22,16 +22,9 @@ export default function Profile() {
 			setUsuarioGlobal(data[0]);
 			setUsuarioLocal(data[0]);
 		} catch ({ response: { data: message } }) {
-			alert( '🙁');
+			alert('🙁');
 			console.log(message);
 		}
-	};
-
-	const getMyFavorites = async () => {
-		const endPoint = '/myFavorites';
-		const { data } = await axios.get(urlServer + endPoint, {
-			headers: { Authorization: 'Bearer ' + token },
-		});
 	};
 
 	useEffect(() => {
@@ -52,26 +45,26 @@ export default function Profile() {
 	};
 
 	return (
-		<div
-			style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}>
+		<div className='flex-profile '>
 			<Container className='mt-4 m-auto'>
-				<h1 className='logo mt-5'>
-					Bienvenido, <span className='fw-bold'>{usuario.nombre} !</span>
+				<h1 className='logo mt-5 font2'>
+					!Que gusto, <span className='fw-bold'>{usuario.nombre} !</span>
 				</h1>
+				<hr/>
 				<Row className='mt-5'>
 					<Col>
 						<div className='justify-content-center align-items-center'>
-							<Row className='mt-3 mb-2 m-auto fs-5'> ¿Qué quieres hacer?</Row>
+							<Row className='mt-3 mb-2 m-auto fs-5 font3'> ¿Qué quieres hacer?</Row>
 							<Row>
 								<Button
-									className='mt-2 primary-btn w250'
+									className='mt-2 primary-btn w250 font3'
 									variant='outline-light'
 									onClick={navigateGallery}>
 									Tienda
 								</Button>
 								<Row>
 									<Button
-										className='mt-2 primary-btn w250'
+										className='mt-2 primary-btn w250 font3'
 										variant='outline-light'
 										onClick={navigateMyProduct}>
 										Mis Productos
@@ -79,7 +72,7 @@ export default function Profile() {
 								</Row>
 								<Row>
 									<Button
-										className='mt-2 primary-btn w250'
+										className='mt-2 primary-btn w250 font3'
 										variant='outline-light'
 										onClick={navigateMyFavorites}>
 										Favoritos
@@ -88,7 +81,7 @@ export default function Profile() {
 							</Row>
 							<Row>
 								<Button
-									className='mt-2 primary-btn w250'
+									className='mt-2 primary-btn w250 font3'
 									variant='outline-light'
 									onClick={navigateSell}>
 									Publicar
@@ -98,11 +91,11 @@ export default function Profile() {
 					</Col>
 					<Col className='mt-3'>
 						<>
-							<h4 className='mb-4'>Datos personales</h4>
+							<h4 className='mb-4 font3'>Datos personales</h4>
 
 							<Table
 								bordered
-								className='table'>
+								className='table font3'>
 								<tbody>
 									<tr>
 										<td className='fw-bold text-start'>Nombre completo:</td>

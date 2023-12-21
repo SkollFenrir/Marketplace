@@ -26,7 +26,7 @@ const Footer = () => {
   };
 
   return (
-    <footer style={footerStyle} className="mb-2">
+    <footer style={footerStyle} className="mb-2 font3 footer-box">
       <Container>
         <Row>
           <Col md={4}>

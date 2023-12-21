@@ -45,7 +45,7 @@ export default function Gallery() {
 
 	return (
 		<>
-			<Container className='Gallery-container'>
+			<Container className='Gallery-container font3'>
 				<Row>
 					<h2>Revisa los productos publicados en nuestro sitio</h2>
 				</Row>
