@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 export default function InputSell() {
-	const {  usuario ,setUsuario } = useContext(AuthContext);
+	const {  usuario } = useContext(AuthContext);
 	const [user, setU] = useState({})
  	const navigate = useNavigate();
 	const handleSetProduct = ({ target: { value, name } }) => {
