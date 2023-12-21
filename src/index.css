@@ -107,3 +107,13 @@ body {
 .card-body-product {
 	flex: 1;
   }
+
+.bottom-footer {
+	display: flex; 
+	flex-direction: column; 
+	min-height: 92vh
+}
+
+.notFound {
+	overflow: hidden !important
+}

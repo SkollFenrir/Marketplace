@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 export default function Home() {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '92vh' }}>
+      <div className="bottom-footer">
       <Container className="py-5 m-auto">
         <h1>
           Bienvenido a <span className="fw-bold">AVDG-Place</span>
