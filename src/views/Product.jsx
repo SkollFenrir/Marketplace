@@ -6,14 +6,17 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
+
 const Product = () => {
 	const { id } = useParams();
 	const { products, setProducts } = useContext(ProductContext);
 	const { usuario, setUsuario } = useContext(AuthContext);
+
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
 	const endPoint = '/product/:id';
 	const navigate = useNavigate();
+	const product_Id = Number(id)
 
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';
@@ -30,6 +33,7 @@ const Product = () => {
 	const getProducts = async () => {
 		const endPoint = '/gallery';
 		const { data } = await axios.get(urlServer + endPoint, {
+			params: {id: product_Id},
 			headers: { Authorization: 'Bearer ' + token },
 		});
 		setProducts(data);
@@ -48,18 +52,21 @@ const Product = () => {
 		};
 		try {
 			await axios.put(urlServer + endPoint, estado, {
-				params: { producto_id: currentProduct.id },
+				params: { producto_id: product_Id },
 				headers: { Authorization: 'Bearer ' + token },
 			});
 			navigate('/gallery');
-			alert('Producto sin stock');
+			toast.warn('Producto sin stock',{
+				position: 'top-center',
+				autoClose: 2500,
+			});
 		} catch (error) {}
 	};
 
 	const addToFavorites = async () => {
-		const ids = { usuario_id: usuario.id, producto_id: number(id) };
+		const productId = { producto_id: product_Id };
 		try {
-			await axios.post(urlServer + endPoint, ids, {
+			await axios.post(urlServer + endPoint, productId, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
 			navigate('/gallery');
@@ -75,7 +82,7 @@ const Product = () => {
 	const removeFromFavorites = async () => {
 		try {
 			await axios.delete(urlServer + endPoint, {
-				params: { usuario_id: usuario.id, producto_id: number(id) },
+				params: { producto_id: product_Id },
 				headers: { Authorization: 'Bearer ' + token },
 			});
 			navigate('/gallery');
@@ -93,8 +100,7 @@ const Product = () => {
 		try {
 			const { data } = await axios.get(urlServer + endPoint, {
 				params: {
-					usuario_id: usuario.id,
-					producto_id: currentProduct.id,
+					producto_id: product_Id,
 				},
 				headers: { Authorization: 'Bearer ' + token },
 			});
@@ -134,11 +140,11 @@ const Product = () => {
 
 							<div className='d-flex justify-content-between'>
 								<div className='fw-bold fs-4'>
-									$ {currentProduct.precio.toLocaleString()}
+									$ {currentProduct.precio}
 								</div>
 								<h2>{currentProduct.estado}</h2>
 
-								{usuario.id == currentProduct.usuario_id ? (
+								{usuario.id == product_Id ? (
 									<Button
 										onClick={() => putEstado()}
 										className='danger-btn'>
