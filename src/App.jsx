@@ -15,13 +15,16 @@ import NotFound from './views/NotFound';
 import MyProducts from './views/MyProducts';
 import Sell from './views/Sell';
 import MyFavorites from './views/MyFavorites';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
-	const [usuario, setUsuario] = useState({});
+	const [usuario, setUsuario] = useState();
 	const [products, setProducts] = useState([]);
 
 	return (
 		<div className='App'>
+			<ToastContainer />
 			<AuthContext.Provider value={{ usuario, setUsuario }}>
 				<ProductContext.Provider value={{ products, setProducts }}>
 					<BrowserRouter>

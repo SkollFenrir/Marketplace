@@ -1,5 +1,5 @@
 import AuthContext from '../Contexts/AuthContext.js';
-import { Container, Navbar as NavbarB, Button } from 'react-bootstrap';
+import { Container, Navbar as NavbarB, Button, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 
@@ -27,30 +27,25 @@ export default function Navbar() {
 				<NavbarB.Collapse className='justify-content-end '>
 					{!usuario ? (
 						<>
-							<NavLink to={'/register'}>
-								<Button
-									className='m-1'
+							<NavLink to={'/register'}
+									className=' logo m-1 fs-5'
 									variant='outline-light'>
-									Registrarse
-								</Button>
+										Registrarse
 							</NavLink>
-							<NavLink to={'/login'}>
-								<Button
-									className='m-1'
+							<NavLink to={'/login'}
+									className='m-1 logo fs-5'
 									variant='outline-light'>
 									Iniciar Sesión
-								</Button>
 							</NavLink>
 						</>
 					) : (
 						<>
-							<NavLink to={'/profile'}>
-								{' '}
-								<Button
-									className='m-1 primary-btn'>
+							<Row className='mx-3'>
+								<NavLink to={'/profile'}
+									className='m-1 primary-btn logo fs-5'>
 									Mi Perfil
-								</Button>{' '}
-							</NavLink>
+								</NavLink>
+							</Row>
 							<NavLink to={'/'}>
 								<Button
 									className='m-1 danger-btn'

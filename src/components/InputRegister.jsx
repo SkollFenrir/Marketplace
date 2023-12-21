@@ -57,7 +57,6 @@ export default function InputRegister() {
 				<Form.Control
 					placeholder='juan.perez@gmail.com'
 					aria-label='email'
-          aria-aria-describedby='correo electrónico del usuario'
           name="correo"
           value={usuario.correo}
           onChange={handleSetUsuario}
@@ -69,7 +68,6 @@ export default function InputRegister() {
 				<Form.Control
 					placeholder='***************'
 					aria-label='password'
-          aria-aria-describedby='contraseña del usuario'
           type="password"
           name="contrasena"
           value={usuario.contrasena}

@@ -65,6 +65,9 @@ export default function InputSell() {
 			<InputGroup className='mb-3'>
 				<InputGroup.Text id='basic-addon2'>Descripción</InputGroup.Text>
 				<Form.Control
+					as="textarea"
+					rows={4}
+					maxLength={1000}
 					onChange={handleSetProduct}
 					value={product.descripcion}
 					name='descripcion'

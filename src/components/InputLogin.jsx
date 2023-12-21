@@ -3,6 +3,8 @@ import AuthContext from '../Contexts/AuthContext.js';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 
 export default function InputLogin() {
 	const { setUsuario } = useContext(AuthContext);
@@ -21,7 +23,10 @@ export default function InputLogin() {
     const endPoint = '/login';
 		try {
 			const { data: token } = await axios.post(url + endPoint, usuario);
-			alert('Usuario identificado con éxito 😀');
+			toast.success('Usuario identificado con éxito 😀',{
+				autoClose: 2500, // milliseconds
+				position: toast.POSITION.TOP_CENTER,
+			  });
 			window.localStorage.setItem('token', token);
 			setUsuario(); // única diferencia con SJ, allá es setUsuario()
 			navigate('/profile');

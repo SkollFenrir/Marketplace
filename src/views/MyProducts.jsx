@@ -1,6 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import CardP from '../components/CardP';
 import AuthContext from '../Contexts/AuthContext';
+import ProductContext from '../Contexts/ProductContext';
 import React, { useContext, useState } from 'react';
 import Footer from '../components/Footer';
 import axios from 'axios';
@@ -9,6 +10,7 @@ import { useEffect } from 'react';
 export default function MyProducts() {
 	const [products, setMyProducts] = useState([]);
 	const { usuario , setUsuario } = useContext(AuthContext);
+	const { setProducts } = useContext(ProductContext)
 	
 	const urlServer = 'http://localhost:3000';
 	const token = localStorage.getItem('token');
@@ -34,6 +36,7 @@ export default function MyProducts() {
         params: {usuario_id: usuario.id},
 				headers: { Authorization: 'Bearer ' + token },
 			} );
+			setProducts(data)
 			setMyProducts(data)
 		} catch (error ) {
 			alert(' 🙁');

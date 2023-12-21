@@ -78,7 +78,7 @@ const Product = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className='bottom-footer'>
 			<Card className='w-50 mx-auto mt-4 mb-5'>
 				<Row>
 					<Col
@@ -104,7 +104,7 @@ const Product = () => {
 
 							<div className='d-flex justify-content-between'>
 								<div className='fw-bold fs-4'>
-									Precio: ${currentProduct.precio.toLocaleString()}
+									 $ {currentProduct.precio.toLocaleString()}
 								</div>
 								<h2>{currentProduct.estado}</h2>
 
@@ -137,7 +137,6 @@ const Product = () => {
 				</Row>
 			</Card>
 
-			<Footer></Footer>
 		</div>
 	);
 };
