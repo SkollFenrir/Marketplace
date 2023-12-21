@@ -1,13 +1,14 @@
-import { useContext,useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import AuthContext from '../Contexts/AuthContext';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
 export default function InputSell() {
-	const {  usuario } = useContext(AuthContext);
-	const [user, setU] = useState({})
- 	const navigate = useNavigate();
+	const { usuario } = useContext(AuthContext);
+	const [user, setU] = useState({});
+	const navigate = useNavigate();
 	const handleSetProduct = ({ target: { value, name } }) => {
 		setProduct({
 			...product,
@@ -22,15 +23,18 @@ export default function InputSell() {
 			const { data } = await axios.get(urlServer + endpoint, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
+			setUs
 			setU(data[0]);
 		} catch (error) {
-			alert('🙁');
+			toast.error('Falló la obtención de los datos del usuario', {
+				position: 'top-center',
+				autoClose: 2500,
+			});
 			console.log(error);
 		}
 	};
 	useEffect(() => {
 		getUsuarioData();
-		console.log(user)
 	}, []);
 	const [product, setProduct] = useState({
 		usuario_id: usuario.id,
@@ -38,15 +42,21 @@ export default function InputSell() {
 	});
 	const postProduct = async () => {
 		const endPoint = '/sell';
-		console.log(product)
 		try {
 			await axios.post(urlServer + endPoint, product, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			alert(' Producto publicado 😎 ')
-			navigate('/profile')
+			toast.success(' Producto publicado 😎', {
+				position: 'top-center',
+				autoClose: 2500,
+			});
+			navigate('/profile');
 		} catch (error) {
 			console.log(error);
+			toast.error('No se pudo publicar tu producto', {
+				position: 'top-center',
+				autoClose: 2500,
+			});
 		}
 	};
 
@@ -65,7 +75,7 @@ export default function InputSell() {
 			<InputGroup className='mb-3'>
 				<InputGroup.Text id='basic-addon2'>Descripción</InputGroup.Text>
 				<Form.Control
-					as="textarea"
+					as='textarea'
 					rows={4}
 					maxLength={1000}
 					onChange={handleSetProduct}
