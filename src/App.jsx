@@ -1,7 +1,6 @@
 import './App.css';
 import AuthContext from './Contexts/AuthContext';
 import ProductContext from './Contexts/ProductContext';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';

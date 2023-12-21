@@ -52,7 +52,7 @@ const Product = () => {
 		};
 		try {
 			await axios.put(urlServer + endPoint, estado, {
-				params: { producto_id: product_Id },
+				params: { producto_id: currentProduct.id },
 				headers: { Authorization: 'Bearer ' + token },
 			});
 			navigate('/gallery');
@@ -115,7 +115,7 @@ const Product = () => {
 
 	return (
 		<div className='bottom-footer'>
-			<Card className='w-50 mx-auto mt-4 mb-5'>
+			<Card className='w-50 mx-auto mt-4 mb-5 font4'>
 				<Row>
 					<Col
 						md={5}
@@ -144,7 +144,7 @@ const Product = () => {
 								</div>
 								<h2>{currentProduct.estado}</h2>
 
-								{usuario.id == product_Id ? (
+								{usuario.id == currentProduct.usuario_id ? (
 									<Button
 										onClick={() => putEstado()}
 										className='danger-btn'>

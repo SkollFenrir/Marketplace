@@ -42,13 +42,13 @@ export default function Navbar() {
 						<>
 							<Row className='mx-3'>
 								<NavLink to={'/profile'}
-									className='m-1 primary-btn logo fs-5'>
+									className={setActive}>
 									Mi Perfil
 								</NavLink>
 							</Row>
 							<NavLink to={'/'}>
 								<Button
-									className='m-1 danger-btn'
+									className='m-1 danger-btn font2'
 									onClick={logOut}>
 									Cerrar sesión
 								</Button>

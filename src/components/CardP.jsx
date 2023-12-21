@@ -10,13 +10,13 @@ const CardP = ({ product }) => {
     const { id, url_img, titulo, precio, estado } = product;
 
     return (
-        <Card className='card'>
+        <Card className='card  c-shadow  '>
             <Card.Img variant='top' src={url_img} />
             <Card.Body>
-                <Card.Title className='mb-4'>{titulo}</Card.Title>
-                <Row className='align-items-center'>
+                <Card.Title className='mb-4 font3'>{titulo}</Card.Title>
+                <Row className='align-items-center font3'>
                     <Col xs='auto'>
-                        <Button className='primary-btn' onClick={() => navigateProduct(id)}>Ver detalle</Button>
+                        <Button className='primary-btn font3' onClick={() => navigateProduct(id)}>Ver detalle</Button>
                     </Col>
                     <Col>
                         <div className='d-flex justify-content-end'>

@@ -53,7 +53,7 @@ export default function MyFavorites() {
 	return (
 		<>
 			<Container className='Gallery-container'>
-				<Row>
+				<Row className='font3'>
 					<h2>Revisa tus artículos favoritos de nuestro sitio</h2>
 				</Row>
 				<Row className='g-4'>
