@@ -3,17 +3,42 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ProductContext from '../Contexts/ProductContext';
 import AuthContext from '../Contexts/AuthContext';
 import { Button, Card, Col, Row } from 'react-bootstrap';
-import Footer from '../components/Footer';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 const Product = () => {
 	const { id } = useParams();
-	const { products } = useContext(ProductContext);
-	const { usuario } = useContext(AuthContext);
+	const { products, setProducts } = useContext(ProductContext);
+	const { usuario, setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
 	const endPoint = '/product/:id';
 	const navigate = useNavigate();
+
+	const getUsuarioData = async () => {
+		const endpoint = '/profile';
+		try {
+			const { data } = await axios.get(urlServer + endpoint, {
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			setUsuario(data[0]);
+		} catch ({ response: { data: message } }) {
+			console.log(message);
+		}
+	};
+
+	const getProducts = async () => {
+		const endPoint = '/gallery';
+		const { data } = await axios.get(urlServer + endPoint, {
+			headers: { Authorization: 'Bearer ' + token },
+		});
+		setProducts(data);
+	};
+
+	useEffect(() => {
+		getUsuarioData();
+		getProducts();
+	}, []);
 
 	const currentProduct = products.find((p) => p.id === Number(id));
 
@@ -21,7 +46,6 @@ const Product = () => {
 		const estado = {
 			estado: false,
 		};
-		console.log(currentProduct.id);
 		try {
 			await axios.put(urlServer + endPoint, estado, {
 				params: { producto_id: currentProduct.id },
@@ -33,13 +57,16 @@ const Product = () => {
 	};
 
 	const addToFavorites = async () => {
-		const ids = { usuario_id: usuario.id, producto_id: currentProduct.id };
+		const ids = { usuario_id: usuario.id, producto_id: number(id) };
 		try {
 			await axios.post(urlServer + endPoint, ids, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			navigate('/my-favorites');
-			alert('Agregado a Favoritos');
+			navigate('/gallery');
+			toast.success('Agregado a Favoritos', {
+				position: 'top-center',
+				autoClose: 2500,
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -48,11 +75,14 @@ const Product = () => {
 	const removeFromFavorites = async () => {
 		try {
 			await axios.delete(urlServer + endPoint, {
-				params: { usuario_id: usuario.id, producto_id: currentProduct.id },
+				params: { usuario_id: usuario.id, producto_id: number(id) },
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			navigate('/my-favorites');
-			alert('Eliminado de favoritos');
+			navigate('/gallery');
+			toast.warn('Eliminado de favoritos', {
+				position: 'top-center',
+				autoClose: 2500,
+			});
 		} catch (error) {
 			console.log(error);
 		}
@@ -61,14 +91,14 @@ const Product = () => {
 	const checkFavoriteStatus = async () => {
 		const endPoint = '/isFavorite';
 		try {
-			const {data} = await axios.get(urlServer + endPoint, {
+			const { data } = await axios.get(urlServer + endPoint, {
 				params: {
 					usuario_id: usuario.id,
 					producto_id: currentProduct.id,
 				},
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			setIsInFavorites(data); 
+			setIsInFavorites(data);
 		} catch (error) {
 			console.log(error);
 		}
@@ -104,7 +134,7 @@ const Product = () => {
 
 							<div className='d-flex justify-content-between'>
 								<div className='fw-bold fs-4'>
-									 $ {currentProduct.precio.toLocaleString()}
+									$ {currentProduct.precio.toLocaleString()}
 								</div>
 								<h2>{currentProduct.estado}</h2>
 
@@ -136,7 +166,6 @@ const Product = () => {
 					</Col>
 				</Row>
 			</Card>
-
 		</div>
 	);
 };

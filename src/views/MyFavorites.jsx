@@ -8,11 +8,11 @@ import axios from 'axios';
 
 export default function MyFavorites() {
 	const [products, setMyProducts] = useState([]);
-	const {setProducts} = useContext(ProductContext)
-	const { usuario, setUsuario } = useContext(AuthContext);
+	const { setProducts } = useContext(ProductContext);
+	const { setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
-	
+
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';
 		try {
@@ -25,15 +25,14 @@ export default function MyFavorites() {
 			console.log(message);
 		}
 	};
-	
+
 	const getMyproducts = async () => {
 		const endpoint = '/my-favorites';
 		try {
 			const { data } = await axios.get(urlServer + endpoint, {
-				params: { usuario_id: usuario.id },
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			setProducts(data)
+			setProducts(data);
 			setMyProducts(data);
 		} catch (error) {
 			alert(error);
@@ -44,7 +43,6 @@ export default function MyFavorites() {
 		getUsuarioData();
 		getMyproducts();
 	}, []);
-
 
 	// Calculando la cantidad de columnas vacías necesarias para completar la fila
 	const emptyColsCount = (4 - (products.length % 4)) % 4;

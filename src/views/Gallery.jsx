@@ -8,7 +8,7 @@ import axios from 'axios';
 
 export default function Gallery() {
 	const { products, setProducts } = useContext(ProductContext);
-	const { usuario , setUsuario } = useContext(AuthContext);
+	const { setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
 	const urlServer = 'http://localhost:3000';
 	const getUsuarioData = async () => {
@@ -19,7 +19,6 @@ export default function Gallery() {
 			});
 			setUsuario(data[0]);
 		} catch ({ response: { data: message } }) {
-			alert('🙁');
 			console.log(message);
 		}
 	};
@@ -30,7 +29,6 @@ export default function Gallery() {
 	const getProducts = async () => {
 		const endPoint = '/gallery';
 		const { data } = await axios.get(urlServer + endPoint, {
-			params: { usuario_id: usuario.id },
 			headers: { Authorization: 'Bearer ' + token },
 		});
 		setProducts(data);
