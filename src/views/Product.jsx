@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductContext from '../Contexts/ProductContext';
 import AuthContext from '../Contexts/AuthContext';
@@ -21,14 +21,14 @@ const Product = () => {
 		const estado = {
 			estado: false,
 		};
-		console.log(currentProduct.id)
+		console.log(currentProduct.id);
 		try {
 			await axios.put(urlServer + endPoint, estado, {
-				params:{producto_id: currentProduct.id},
+				params: { producto_id: currentProduct.id },
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			navigate('/gallery')
-			alert('Producto sin stock')
+			navigate('/gallery');
+			alert('Producto sin stock');
 		} catch (error) {}
 	};
 
@@ -57,33 +57,25 @@ const Product = () => {
 			console.log(error);
 		}
 	};
-
-
-// para el renderizado condicional de botones Añadir/Eliminar de Favoritos
-  const [isInFavorites, setIsInFavorites] = useState(false);
-
-  useEffect(() => {
-      const checkFavoriteStatus = async () => {
-          try {
-              const response = await axios.get(`localhost:3000/isFavorite`, {
-                  params: {
-                      usuario_id: usuario.id,
-                      producto_id: currentProduct.id
-                  },
-                  headers: { Authorization: 'Bearer ' + token },
-              });
-              setIsInFavorites(response.data.isInFavorites); // asumiendo que el backend devuelve un booleano
-          } catch (error) {
-              console.log(error);
-          }
-      };
-
-      checkFavoriteStatus();
-  }, [currentProduct.id, token, urlServer, usuario.id]);
-
-
-
-
+	const [isInFavorites, setIsInFavorites] = useState('');
+	const checkFavoriteStatus = async () => {
+		const endPoint = '/isFavorite';
+		try {
+			const {data} = await axios.get(urlServer + endPoint, {
+				params: {
+					usuario_id: usuario.id,
+					producto_id: currentProduct.id,
+				},
+				headers: { Authorization: 'Bearer ' + token },
+			});
+			setIsInFavorites(data); 
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	useEffect(() => {
+		checkFavoriteStatus();
+	}, []);
 
 	return (
 		<div>
@@ -116,27 +108,29 @@ const Product = () => {
 								</div>
 								<h2>{currentProduct.estado}</h2>
 
-								{/* {usuario.id == producto.usuario_id ? */} 
-                <Button
-									onClick={() => putEstado()}
-									className='danger-btn'>
-									Eliminar producto ❌
-								</Button> 
-                {/* : <></> } */}
-								
-               {/*  {!isInFavorites ?  */}
-                <Button
-									className='primary-btn'
-									onClick={() => addToFavorites()}>
-									Añadir a Favoritos ❤
-								</Button> 
-                {/* :  */}
-								<Button
-									className='primary-btn'
-									onClick={() => removeFromFavorites()}>
-									Eliminar de Favoritos ❌
-								</Button>
-                {/* } */}
+								{usuario.id == currentProduct.usuario_id ? (
+									<Button
+										onClick={() => putEstado()}
+										className='danger-btn'>
+										Eliminar producto ❌
+									</Button>
+								) : (
+									<></>
+								)}
+
+								{!isInFavorites ? (
+									<Button
+										className='primary-btn'
+										onClick={() => addToFavorites()}>
+										Añadir a Favoritos ❤
+									</Button>
+								) : (
+									<Button
+										className='primary-btn'
+										onClick={() => removeFromFavorites()}>
+										Eliminar de Favoritos ❌
+									</Button>
+								)}
 							</div>
 						</Card.Body>
 					</Col>
