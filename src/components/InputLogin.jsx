@@ -5,11 +5,13 @@ import { Button, Form, InputGroup } from 'react-bootstrap';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-
 export default function InputLogin() {
 	const { setUsuario } = useContext(AuthContext);
 	const navigate = useNavigate();
-	const [usuario, setUsuarioLocal] = useState({});
+	const [usuario, setUsuarioLocal] = useState({
+		correo: '',
+		contrasena: '',
+	});
 
 	const handleSetUsuario = ({ target: { value, name } }) => {
 		const field = {};
@@ -19,19 +21,22 @@ export default function InputLogin() {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-    const url = 'http://localhost:3000';
-    const endPoint = '/login';
+		const url = 'http://localhost:3000';
+		const endPoint = '/login';
 		try {
 			const { data: token } = await axios.post(url + endPoint, usuario);
-			toast.success('Usuario identificado con éxito 😀',{
+			toast.success('Usuario identificado con éxito 😀', {
 				autoClose: 2500, // milliseconds
-				position: toast.POSITION.TOP_CENTER,
-			  });
+				position: 'top-center',
+			});
 			window.localStorage.setItem('token', token);
-			setUsuario(); // única diferencia con SJ, allá es setUsuario()
+			setUsuario();
 			navigate('/profile');
 		} catch (error) {
-			alert('Hubo un error con los datos entregados. Vuelve a intentarlo.');
+			toast.error('Correo o contraseña incorrecta', {
+				position: 'top-center',
+				autoClose: 2500,
+			});
 		}
 	};
 
