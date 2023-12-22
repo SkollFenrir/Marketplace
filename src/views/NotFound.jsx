@@ -5,8 +5,8 @@ import AuthContext from '../Contexts/AuthContext';
 const NotFound = () => {
 	const { setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
-	const urlServer = 'http://localhost:3000';
-  
+	const urlServer = 'https://market-back-bapf.onrender.com';
+
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
 		return () => {

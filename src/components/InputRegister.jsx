@@ -20,7 +20,7 @@ export default function InputRegister() {
 	};
 
 	const registrarUsuario = async () => {
-		const urlServer = 'http://localhost:3000';
+		const urlServer = 'https://market-back-bapf.onrender.com';
 		const endpoint = '/register';
 		try {
 			await axios.post(urlServer + endpoint, usuario);
@@ -39,7 +39,7 @@ export default function InputRegister() {
 	};
 
 	return (
-		<Container >
+		<Container>
 			<InputGroup className='mb-3 mt-5 font3'>
 				<InputGroup.Text id='basic-addon1'>Nombre</InputGroup.Text>
 				<Form.Control

@@ -21,7 +21,7 @@ export default function InputLogin() {
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
-		const url = 'http://localhost:3000';
+		const url = 'https://market-back-bapf.onrender.com';
 		const endPoint = '/login';
 		try {
 			const { data: token } = await axios.post(url + endPoint, usuario);

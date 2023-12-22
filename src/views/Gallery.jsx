@@ -10,7 +10,7 @@ export default function Gallery() {
 	const { products, setProducts } = useContext(ProductContext);
 	const { setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
-	const urlServer = 'http://localhost:3000';
+	const urlServer = 'https://market-back-bapf.onrender.com';
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';
 		try {
@@ -46,11 +46,12 @@ export default function Gallery() {
 	return (
 		<div className='bottom-footer'>
 			<Container className='Gallery-container font3'>
-				
-			<Row className='justify-content-center w-100'>
-					<Col xs={12} className='text-center'>
+				<Row className='justify-content-center w-100'>
+					<Col
+						xs={12}
+						className='text-center'>
 						<h2 className='shadowed-text mt-3 fw-bold'>
-						Revisa los productos publicados en nuestro sitio
+							Revisa los productos publicados en nuestro sitio
 						</h2>
 					</Col>
 				</Row>

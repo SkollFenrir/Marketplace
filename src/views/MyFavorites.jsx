@@ -11,7 +11,7 @@ export default function MyFavorites() {
 	const { setProducts } = useContext(ProductContext);
 	const { setUsuario } = useContext(AuthContext);
 	const token = localStorage.getItem('token');
-	const urlServer = 'http://localhost:3000';
+	const urlServer = 'https://market-back-bapf.onrender.com';
 
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';

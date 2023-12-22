@@ -15,14 +15,14 @@ export default function InputSell() {
 		});
 	};
 	const token = localStorage.getItem('token');
-	const urlServer = 'http://localhost:3000';
+	const urlServer = 'https://market-back-bapf.onrender.com';
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';
 		try {
 			const { data } = await axios.get(urlServer + endpoint, {
 				headers: { Authorization: 'Bearer ' + token },
 			});
-			setUsuario(data[0])
+			setUsuario(data[0]);
 		} catch (error) {
 			toast.error('Falló la obtención de los datos del usuario', {
 				position: 'top-center',

@@ -10,7 +10,7 @@ export default function Profile() {
 	const { setUsuario: setUsuarioGlobal } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const token = localStorage.getItem('token');
-	const urlServer = 'http://localhost:3000';
+	const urlServer = 'https://market-back-bapf.onrender.com';
 
 	const getUsuarioData = async () => {
 		const endpoint = '/profile';
@@ -50,9 +50,12 @@ export default function Profile() {
 					¡ Qué gusto, <span className='fw-bold font1'>{usuario.nombre} !</span>
 				</div>
 				<Row className='mt-5  flex-e'>
-					<Col >
+					<Col>
 						<div className='flex-e'>
-							<Row className='mt-3 mb-2 m-auto fs-5 font3 '> ¿Qué quieres hacer?</Row>
+							<Row className='mt-3 mb-2 m-auto fs-5 font3 '>
+								{' '}
+								¿Qué quieres hacer?
+							</Row>
 							<Row className='flex-e'>
 								<Button
 									className='mt-2 primary-btn w250 font3'
@@ -91,7 +94,7 @@ export default function Profile() {
 						<>
 							<h4 className='mb-4 font3 '>Datos personales</h4>
 
-							<Table 
+							<Table
 								bordered
 								className='table font3 '>
 								<tbody>
