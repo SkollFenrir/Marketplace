@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './views/Home';
-import RegisterForm from './views/Register';
+import Register from './views/Register';
 import Login from './views/Login';
 import Profile from './views/Profile';
 import Gallery from './views/Gallery';
@@ -35,7 +35,7 @@ function App() {
 							/>
 							<Route
 								path='/register'
-								element={<RegisterForm />}
+								element={<Register />}
 							/>
 							<Route
 								path='/login'
