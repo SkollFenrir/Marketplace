@@ -51,10 +51,14 @@ export default function MyFavorites() {
 	));
 
 	return (
-		<>
-			<Container className='Gallery-container'>
-				<Row className='font3'>
-					<h2>Revisa tus artículos favoritos de nuestro sitio</h2>
+		<div className='bottom-footer'>
+			<Container className='Gallery-container font3'>
+				<Row className='justify-content-center w-100'>
+					<Col xs={12} className='text-center'>
+						<h2 className='shadowed-text mt-3 fw-bold'>
+							Revisa tus productos favoritos
+						</h2>
+					</Col>
 				</Row>
 				<Row className='g-4'>
 					{/* Mapeando los productos del usuario */}
@@ -68,6 +72,6 @@ export default function MyFavorites() {
 				</Row>
 			</Container>
 			<Footer />
-		</>
+		</div>
 	);
 }

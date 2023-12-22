@@ -24,23 +24,23 @@ export default function Navbar() {
 					</NavLink>
 				</NavbarB.Brand>
 				<NavbarB.Toggle />
-				<NavbarB.Collapse className='justify-content-end '>
+				<NavbarB.Collapse className='justify-content-end shadowed-text mx-3'>
 					{!usuario ? (
 						<>
 							<NavLink to={'/register'}
-									className=' logo m-1 fs-5'
-									variant='outline-light'>
+									className=' logo m-2 fs-5'
+									>
 										Registrarse
 							</NavLink>
 							<NavLink to={'/login'}
-									className='m-1 logo fs-5'
-									variant='outline-light'>
+									className='m-2 logo fs-5'
+									>
 									Iniciar Sesión
 							</NavLink>
 						</>
 					) : (
 						<>
-							<Row className='mx-3'>
+							<Row className='mx-3 shadowed-text'>
 								<NavLink to={'/profile'}
 									className={setActive}>
 									Mi Perfil

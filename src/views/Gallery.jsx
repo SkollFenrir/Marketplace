@@ -44,10 +44,15 @@ export default function Gallery() {
 	));
 
 	return (
-		<>
+		<div className='bottom-footer'>
 			<Container className='Gallery-container font3'>
-				<Row>
-					<h2>Revisa los productos publicados en nuestro sitio</h2>
+				
+			<Row className='justify-content-center w-100'>
+					<Col xs={12} className='text-center'>
+						<h2 className='shadowed-text mt-3 fw-bold'>
+						Revisa los productos publicados en nuestro sitio
+						</h2>
+					</Col>
 				</Row>
 				<Row className='g-4'>
 					{/* Mapeando productos */}
@@ -61,6 +66,6 @@ export default function Gallery() {
 				</Row>
 			</Container>
 			<Footer />
-		</>
+		</div>
 	);
 }
