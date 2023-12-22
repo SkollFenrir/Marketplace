@@ -1,7 +1,7 @@
 import './App.css';
 import AuthContext from './Contexts/AuthContext';
 import ProductContext from './Contexts/ProductContext';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './views/Home';
@@ -26,7 +26,7 @@ function App() {
 			<ToastContainer />
 			<AuthContext.Provider value={{ usuario, setUsuario }}>
 				<ProductContext.Provider value={{ products, setProducts }}>
-					<BrowserRouter>
+					<HashRouter basename='/'>
 						<Navbar />
 						<Routes>
 							<Route
@@ -70,7 +70,7 @@ function App() {
 								element={<NotFound />}
 							/>
 						</Routes>
-					</BrowserRouter>
+					</HashRouter>
 				</ProductContext.Provider>
 			</AuthContext.Provider>
 		</div>
