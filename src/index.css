@@ -113,19 +113,23 @@ td {
 }
 
 .primary-btn {
-	background: rgb(115, 179, 141);
 	background: linear-gradient(
 		90deg,
 		rgb(70, 121, 90) 7%,
 		rgba(73, 160, 120, 1) 81%,
 		rgba(68, 153, 119, 1) 100%
 	);
-	border-color: #236144;
+	border: 0;
 }
 
 .primary-btn:hover {
-	background-color: #307a58;
-	border-color: #307a58;
+	color: aliceblue;
+	background: linear-gradient(
+		90deg,
+		rgb(39, 66, 50) 7%,
+		rgb(47, 102, 76) 81%,
+		rgb(35, 85, 64) 100%
+	);;
 }
 
 .danger-btn {
