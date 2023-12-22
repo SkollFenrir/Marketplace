@@ -52,9 +52,9 @@ export default function MyFavorites() {
 
 	return (
 		<div className='bottom-footer'>
-			<Container className='Gallery-container font3'>
-				<Row className='justify-content-center w-100'>
-					<Col xs={12} className='text-center'>
+			<Container className='Gallery-container font3 '>
+				<Row className='w-100'>
+					<Col xs={12} >
 						<h2 className='shadowed-text mt-3 fw-bold'>
 							Revisa tus productos favoritos
 						</h2>

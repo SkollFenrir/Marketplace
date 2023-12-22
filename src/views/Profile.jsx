@@ -45,23 +45,22 @@ export default function Profile() {
 
 	return (
 		<div className='bottom-footer'>
-			<Container className='mt-4 m-auto'>
+			<Container className='mt-4 m-auto '>
 				<div className='logo mt-5 font1'>
 					¡ Qué gusto, <span className='fw-bold font1'>{usuario.nombre} !</span>
 				</div>
-				<hr/>
-				<Row className='mt-5'>
-					<Col>
-						<div className='justify-content-center align-items-center'>
-							<Row className='mt-3 mb-2 m-auto fs-5 font3'> ¿Qué quieres hacer?</Row>
-							<Row>
+				<Row className='mt-5  flex-e'>
+					<Col >
+						<div className='flex-e'>
+							<Row className='mt-3 mb-2 m-auto fs-5 font3 '> ¿Qué quieres hacer?</Row>
+							<Row className='flex-e'>
 								<Button
 									className='mt-2 primary-btn w250 font3'
 									variant='outline-light'
 									onClick={navigateGallery}>
 									Tienda
 								</Button>
-								<Row>
+								<Row className='flex-e'>
 									<Button
 										className='mt-2 primary-btn w250 font3'
 										variant='outline-light'
@@ -69,7 +68,7 @@ export default function Profile() {
 										Mis Productos
 									</Button>
 								</Row>
-								<Row>
+								<Row className='flex-e'>
 									<Button
 										className='mt-2 primary-btn w250 font3'
 										variant='outline-light'
@@ -88,13 +87,13 @@ export default function Profile() {
 							</Row>
 						</div>
 					</Col>
-					<Col className='mt-3'>
+					<Col className='mt-3 flex-e'>
 						<>
-							<h4 className='mb-4 font3'>Datos personales</h4>
+							<h4 className='mb-4 font3 '>Datos personales</h4>
 
-							<Table
+							<Table 
 								bordered
-								className='table font3'>
+								className='table font3 '>
 								<tbody>
 									<tr>
 										<td className='fw-bold text-start'>Nombre completo:</td>

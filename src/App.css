@@ -1,8 +1,9 @@
 body {
-	background: #216869;
+	/* background: #216869; */
+	background-image: url("public/low-poly-grid-haikei.svg");
+	object-fit: fill;
 	color: white;
 	text-align: center;
-	
 }
 
 a {

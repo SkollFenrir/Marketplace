@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Button, Form, InputGroup } from 'react-bootstrap';
+import { Button, Container, Form, InputGroup } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -39,8 +39,8 @@ export default function InputRegister() {
 	};
 
 	return (
-		<>
-			<InputGroup className='mb-3 mt-5'>
+		<Container >
+			<InputGroup className='mb-3 mt-5 font3'>
 				<InputGroup.Text id='basic-addon1'>Nombre</InputGroup.Text>
 				<Form.Control
 					placeholder='Juan'
@@ -51,7 +51,7 @@ export default function InputRegister() {
 				/>
 			</InputGroup>
 
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon1'>Apellido</InputGroup.Text>
 				<Form.Control
 					placeholder='Pérez'
@@ -62,7 +62,7 @@ export default function InputRegister() {
 				/>
 			</InputGroup>
 
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon1'>Correo</InputGroup.Text>
 				<Form.Control
 					placeholder='juan.perez@gmail.com'
@@ -73,7 +73,7 @@ export default function InputRegister() {
 				/>
 			</InputGroup>
 
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon1'>Contraseña</InputGroup.Text>
 				<Form.Control
 					placeholder='***************'
@@ -86,6 +86,7 @@ export default function InputRegister() {
 			</InputGroup>
 
 			<Form.Select
+				className='font3'
 				aria-label='Default select example'
 				name='genero'
 				value={usuario.genero}
@@ -97,10 +98,10 @@ export default function InputRegister() {
 			</Form.Select>
 
 			<Button
-				className='mt-3 primary-btn'
+				className='mt-3 primary-btn font3'
 				onClick={registrarUsuario}>
 				Enviar formulario
 			</Button>
-		</>
+		</Container>
 	);
 }

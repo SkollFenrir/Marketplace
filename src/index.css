@@ -30,23 +30,23 @@ body {
 }
 .font2 {
 	font-weight: bold;
-	font-family:Verdana, Geneva, Tahoma, sans-serif
-} 
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .font3 {
-	font-family:Verdana, Geneva, Tahoma, sans-serif
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .font4 {
-	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .shadowed-text {
 	text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
+}
 
 hr {
-	border-color: #9cc5a1
+	border-color: #9cc5a1;
 }
 
 .footer-box {
@@ -58,12 +58,18 @@ hr {
 }
 
 .card {
-	background-color: #9cc5a1;
+	background: rgb(115, 179, 141);
+	background: linear-gradient(
+		0deg,
+		rgba(115, 179, 141, 1) 7%,
+		rgba(73, 160, 120, 1) 81%,
+		rgba(68, 153, 119, 1) 100%
+	);
 	color: #444;
 	transition: box-shadow 0.5s ease;
 }
 .card:hover {
-	box-shadow: 0.6rem 0.6rem 0 rgba(0,0,0, 0.2);
+	box-shadow: 0.6rem 0.6rem 0 rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -72,31 +78,49 @@ hr {
 
 .Gallery-container {
 	width: 100%;
-	/* height: auto; */
-	/* min-height: 100vh; */
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	padding: 28px;
 	align-items: center;
 	justify-content: center;
 	gap: 60px;
 }
 
+.flex-e {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
 .table {
-	background-color: #9cc5a1;
-	color: #666;
+	background: linear-gradient(0deg, #47c580 20%, #48c088 60%);
+	width: 75%;
+	color: #204645;
 	border-spacing: 0;
 	border-collapse: separate;
 	border-radius: 10px;
-	border: 1px solid black;
 	border: var(--border);
 	overflow: hidden;
 }
 
+.table-bordered > :not(caption) > * > * {
+	border-width: 0 0px;
+}
+
+td {
+	width: 10%;
+}
+
 .primary-btn {
-	background-color: #49a078;
-	border-color: #49a078;
+	background: rgb(115, 179, 141);
+	background: linear-gradient(
+		90deg,
+		rgb(70, 121, 90) 7%,
+		rgba(73, 160, 120, 1) 81%,
+		rgba(68, 153, 119, 1) 100%
+	);
+	border-color: #236144;
 }
 
 .primary-btn:hover {
@@ -115,8 +139,7 @@ hr {
 }
 
 .navbarB {
-	background: linear-gradient(90deg,  #49a078 20%, #9cc5a1 60%);
-	background-color: #49a078;
+	background: linear-gradient(90deg, #49a078 20%, #9cc5a1 60%);
 }
 
 .w250 {

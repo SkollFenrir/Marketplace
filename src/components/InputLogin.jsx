@@ -48,7 +48,7 @@ export default function InputLogin() {
 
 	return (
 		<>
-			<InputGroup className='mb-3 mt-5'>
+			<InputGroup className='mb-3 mt-5 font3'>
 				<InputGroup.Text id='basic-addon1'>Correo</InputGroup.Text>
 				<Form.Control
 					onChange={handleSetUsuario}
@@ -60,7 +60,7 @@ export default function InputLogin() {
 				/>
 			</InputGroup>
 
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon1'>Contraseña</InputGroup.Text>
 				<Form.Control
 					onChange={handleSetUsuario}
@@ -74,7 +74,7 @@ export default function InputLogin() {
 			</InputGroup>
 
 			<Button
-				className='mt-3 primary-btn'
+				className='mt-3 primary-btn font3'
 				onClick={handleLogin}>
 				Iniciar Sesión
 			</Button>

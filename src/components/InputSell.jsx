@@ -59,7 +59,7 @@ export default function InputSell() {
 
 	return (
 		<>
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon1'>Título</InputGroup.Text>
 				<Form.Control
 					onChange={handleSetProduct}
@@ -69,7 +69,7 @@ export default function InputSell() {
 					aria-label='Polera Pumba'
 				/>
 			</InputGroup>
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon2'>Descripción</InputGroup.Text>
 				<Form.Control
 					as='textarea'
@@ -82,7 +82,7 @@ export default function InputSell() {
 					aria-label='Color, tamaño...'
 				/>
 			</InputGroup>
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon3'>Imagen</InputGroup.Text>
 				<Form.Control
 					onChange={handleSetProduct}
@@ -92,7 +92,7 @@ export default function InputSell() {
 					aria-label='Url de la imagen'
 				/>
 			</InputGroup>
-			<InputGroup className='mb-3'>
+			<InputGroup className='mb-3 font3'>
 				<InputGroup.Text id='basic-addon4'>Precio</InputGroup.Text>
 				<Form.Control
 					onChange={handleSetProduct}
@@ -105,7 +105,7 @@ export default function InputSell() {
 				/>
 			</InputGroup>
 			<Button
-				className='primary-btn'
+				className='primary-btn font3'
 				onClick={postProduct}>
 				Publicar producto
 			</Button>
