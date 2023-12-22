@@ -7,6 +7,7 @@ body {
 	font-size: 28px;
 	font-style: italic;
 	text-decoration: none;
+	text-align: center;
 }
 
 .active {
@@ -40,6 +41,10 @@ body {
 	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
+.shadowed-text {
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
 hr {
 	border-color: #9cc5a1
 }
@@ -54,7 +59,7 @@ hr {
 
 .card {
 	background-color: #9cc5a1;
-	color: #666;
+	color: #444;
 	transition: box-shadow 0.5s ease;
 }
 .card:hover {
@@ -67,8 +72,8 @@ hr {
 
 .Gallery-container {
 	width: 100%;
-	height: auto;
-	min-height: 100vh;
+	/* height: auto; */
+	/* min-height: 100vh; */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -114,12 +119,6 @@ hr {
 	background-color: #49a078;
 }
 
-.flex-profile {
-	display: flex;
-	flex-direction: column;
-	min-height: 92vh;
- }
-
 .w250 {
 	width: 250px;
 }
@@ -153,6 +152,7 @@ hr {
 .bottom-footer {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	min-height: 92vh;
 }
 

@@ -10,7 +10,7 @@ const CardP = ({ product }) => {
     const { id, url_img, titulo, precio, estado } = product;
 
     return (
-        <Card className='card  c-shadow  '>
+        <Card className='card  c-shadow'>
             <Card.Img variant='top' src={url_img} />
             <Card.Body>
                 <Card.Title className='mb-4 font3'>{titulo}</Card.Title>

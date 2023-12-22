@@ -4,7 +4,6 @@ import { Button, Col, Container, Row, Table } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer.jsx';
 import axios from 'axios';
-import ProductContext from '../Contexts/ProductContext.js';
 
 export default function Profile() {
 	const [usuario, setUsuarioLocal] = useState({});
@@ -45,11 +44,11 @@ export default function Profile() {
 	};
 
 	return (
-		<div className='flex-profile '>
+		<div className='bottom-footer'>
 			<Container className='mt-4 m-auto'>
-				<h1 className='logo mt-5 font2'>
-					!Que gusto, <span className='fw-bold'>{usuario.nombre} !</span>
-				</h1>
+				<div className='logo mt-5 font1'>
+					¡ Qué gusto, <span className='fw-bold font1'>{usuario.nombre} !</span>
+				</div>
 				<hr/>
 				<Row className='mt-5'>
 					<Col>

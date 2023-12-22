@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ProductContext from '../Contexts/ProductContext';
 import AuthContext from '../Contexts/AuthContext';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import axios from 'axios';
+import Footer from '../components/Footer';
 
 
 const Product = () => {
@@ -115,10 +116,18 @@ const Product = () => {
 
 	return (
 		<div className='bottom-footer'>
-			<Card className='w-50 mx-auto mt-4 mb-5 font4'>
+			<Container className='Gallery-container font3'>
+			<Row className='justify-content-center w-100'>
+				<Col xs={12} className='text-center'>
+					<h2 className='shadowed-text mt-3 fw-bold'>
+						¿Qué tal este producto? Revisa sus características
+					</h2>
+				</Col>
+			</Row>
+			<Card className='w-75 mx-auto mt-4 mb-5 font4'>
 				<Row>
 					<Col
-						md={5}
+						md={4}
 						className='d-flex align-items-center'>
 						<div className='square-image-container'>
 							<img
@@ -128,26 +137,31 @@ const Product = () => {
 							/>
 						</div>
 					</Col>
-					<Col md={7}>
-						<Card.Body
-							md={7}
-							className='card-body'>
-							<Card.Title className='fw-bolder first-let-cap'>
+					<Col md={8}>
+						<Card.Body className='ayuda aquí GPT'>
+							
+							<div>
+								<Card.Title className='fw-bolder first-let-cap'>
 								{currentProduct.titulo}
-							</Card.Title>
+								</Card.Title>
 
-							<Card.Text>{currentProduct.descripcion}</Card.Text>
+								<Card.Text>{currentProduct.descripcion}</Card.Text>
+							</div>
 
-							<div className='d-flex justify-content-between'>
+							<div className='d-flex justify-content-between mt-5'>
+								
+								<div>
 								<div className='fw-bold fs-4'>
-									$ {currentProduct.precio}
+									$ {currentProduct.precio.toLocaleString()}
 								</div>
-								<h2>{currentProduct.estado}</h2>
+								<div>{currentProduct.estado}</div> {/* para qué está esto? */}
+								</div>
 
+								<div>
 								{usuario.id == currentProduct.usuario_id ? (
 									<Button
 										onClick={() => putEstado()}
-										className='danger-btn'>
+										className='danger-btn mx-2'>
 										Eliminar producto ❌
 									</Button>
 								) : (
@@ -156,22 +170,26 @@ const Product = () => {
 
 								{!isInFavorites ? (
 									<Button
-										className='primary-btn'
+										className='primary-btn mx-2'
 										onClick={() => addToFavorites()}>
 										Añadir a Favoritos ❤
 									</Button>
 								) : (
 									<Button
-										className='primary-btn'
+										className='primary-btn mx-2'
 										onClick={() => removeFromFavorites()}>
 										Eliminar de Favoritos ❌
 									</Button>
 								)}
+								</div>
 							</div>
 						</Card.Body>
 					</Col>
 				</Row>
 			</Card>
+			
+			</Container>
+			<Footer></Footer>
 		</div>
 	);
 };

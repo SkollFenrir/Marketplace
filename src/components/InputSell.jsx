@@ -98,6 +98,8 @@ export default function InputSell() {
 					onChange={handleSetProduct}
 					value={product.precio}
 					name='precio'
+					type='number'
+					inputMode='numeric'
 					placeholder='20000'
 					aria-label='20000'
 				/>
