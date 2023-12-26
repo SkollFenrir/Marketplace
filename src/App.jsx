@@ -16,6 +16,7 @@ import Sell from './views/Sell';
 import MyFavorites from './views/MyFavorites';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
 	const [usuario, setUsuario] = useState();
@@ -26,50 +27,73 @@ function App() {
 			<ToastContainer />
 			<AuthContext.Provider value={{ usuario, setUsuario }}>
 				<ProductContext.Provider value={{ products, setProducts }}>
-						<Navbar />
-						<Routes>
-							<Route
-								path='/'
-								element={<Home />}
-							/>
-							<Route
-								path='/register'
-								element={<Register />}
-							/>
-							<Route
-								path='/login'
-								element={<Login />}
-							/>
+					<Navbar />
+					<Routes>
+						<Route
+							path='/'
+							element={<Home />}
+						/>
+						<Route
+							path='/register'
+							element={<Register />}
+						/>
+						<Route
+							path='/login'
+							element={<Login />}
+						/>
+						<Route
+							path='/sell'
+							element={<PrivateRoute />}>
 							<Route
 								path='/sell'
 								element={<Sell />}
 							/>
+						</Route>
+						<Route
+							path='/gallery'
+							element={<PrivateRoute />}>
 							<Route
 								path='/gallery'
 								element={<Gallery />}
 							/>
+						</Route>
+						<Route
+							path='/my-products'
+							element={<PrivateRoute />}>
 							<Route
 								path='/my-products'
 								element={<MyProducts />}
 							/>
+						</Route>
+						<Route
+							path='/my-favorites'
+							element={<PrivateRoute />}>
 							<Route
 								path='/my-favorites'
 								element={<MyFavorites />}
 							/>
+						</Route>
+						<Route
+							path='/product/:id'
+							element={<PrivateRoute />}>
 							<Route
 								path='/product/:id'
 								element={<Product />}
 							/>
+						</Route>
+						<Route
+							path='/profile'
+							element={<PrivateRoute />}>
 							<Route
 								path='/profile'
 								element={<Profile />}
 							/>
-							<Route
-								path='/*'
-								element={<NotFound />}
-							/>
-						</Routes>
-					
+						</Route>
+						<Route
+							path='/*'
+							element={<NotFound />}
+						/>
+					</Routes>
 				</ProductContext.Provider>
 			</AuthContext.Provider>
 		</div>

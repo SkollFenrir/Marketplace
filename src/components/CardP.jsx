@@ -24,7 +24,6 @@ const CardP = ({ product }) => {
                         </div>
                     </Col>
                 </Row>
-                <Card.Text>{estado}</Card.Text>
             </Card.Body>
         </Card>
     );
