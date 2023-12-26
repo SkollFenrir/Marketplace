@@ -153,8 +153,6 @@ const Product = () => {
 										<div className='fw-bold fs-4'>
 											$ {currentProduct.precio.toLocaleString()}
 										</div>
-										<div>{currentProduct.estado}</div>{' '}
-										{/* para qué está esto? */}
 									</div>
 
 									<div>
